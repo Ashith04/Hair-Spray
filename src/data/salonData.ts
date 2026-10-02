@@ -264,7 +264,7 @@ const _LEGACY_SERVICES: ServiceItem[] = [
     popular: true,
     subServices: ['Enzyme Exfoliation', 'Ultrasonic Serum Infusion', 'Vitamin C Peel-off Rubber Mask', 'Glow Booster'],
     benefits: ['Instant brightness', 'Fades hyperpigmentation', 'Even skin texture'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80'
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80'
   },
   {
     id: 'aroma-therapy-facial',
@@ -519,7 +519,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'gal-5',
     title: 'Vitamin C Brightening Glass Skin',
     category: 'Facials & Nails',
-    imageUrl: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=1000&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1000&auto=format&fit=crop&q=80',
     description: 'Post-facial radiant illumination and deep hydration therapy.'
   },
   {

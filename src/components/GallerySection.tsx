@@ -159,6 +159,9 @@ export const GallerySection: React.FC = () => {
               <img
                 src={item.imageUrl}
                 alt={item.title}
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&auto=format&fit=crop&q=80';
+                }}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white font-sans">
@@ -201,6 +204,9 @@ export const GallerySection: React.FC = () => {
                   <img
                     src={filteredGallery[selectedImageIndex].imageUrl}
                     alt={filteredGallery[selectedImageIndex].title}
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&auto=format&fit=crop&q=80';
+                    }}
                     className="w-full h-full object-contain"
                   />
 
