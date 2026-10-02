@@ -5,6 +5,7 @@
 [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.1-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Motion](https://img.shields.io/badge/Motion-12.2-FF0055?logo=framer&logoColor=white)](https://motion.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Status](https://img.shields.io/badge/Production-Ready-emerald)](#)
 
 A high-performance, responsive Single Page Application (SPA) architected for **Hair Spray Unisex Salon** (Kavoor, Mangalore). Engineered with **React 19**, **TypeScript**, **Tailwind CSS v4**, and **Motion**, this platform integrates an interactive appointment booking engine, multi-criteria brochure service cataloging (80+ treatments), an interactive before/after transformation comparator, real-time salon operational state calculation, and zero-friction omnichannel booking dispatch via the WhatsApp Business protocol.
@@ -285,5 +286,12 @@ npm run preview
 ---
 
 ## 📄 License & Attribution
+This project is open-source software licensed under the **[MIT License](./LICENSE)**.
+
+```
+MIT License
+Copyright (c) 2026 Hair Spray Unisex Salon
+```
+
 Engineered for **Hair Spray Unisex Salon**, Kavoor Junction, Airport Road, Mangalore, Karnataka.  
-All brand trademarks, service descriptions, and photography assets are managed under salon proprietary rights.
+Brand trademarks, service names, and promotional media assets are managed under salon operational guidelines.
