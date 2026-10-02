@@ -1,4 +1,10 @@
 import { ServiceItem, Stylist, ReviewItem, FAQItem, GalleryItem, MembershipPlan, DayTiming } from '../types';
+import ashwalImage from '../assets/images/ashwal.jpg';
+import abhishekImage from '../assets/images/abhishek.jpg';
+import vedaImage from '../assets/images/veda.jpg';
+import ashaImage from '../assets/images/asha.jpg';
+import aliImage from '../assets/images/ali.jpg';
+import sandhyaImage from '../assets/images/sandhya.jpg';
 
 export const SALON_INFO = {
   name: 'Hair Spray Unisex Salon',
@@ -319,52 +325,46 @@ const _LEGACY_SERVICES: ServiceItem[] = [
 
 export const STYLISTS_LIST: Stylist[] = [
   {
-    id: 'stylist-1',
-    name: 'Rohan Shetty',
-    role: 'Creative Director & Master Hair Artist',
-    experienceYears: 11,
-    specialties: ['Keratin Cysteine', 'Creative Balayage', 'Fade & Precision Cuts'],
-    bio: 'Trained in Mumbai and London academies, Rohan has 11+ years pioneering cutting-edge hair transformations with tailored consultations.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80',
-    rating: 4.9,
-    reviewsCount: 142,
-    instagramHandle: '@rohan_hairartist'
+    id: 'ashwal',
+    name: 'Ashwal',
+    role: 'Hairstylist',
+    bio: 'Precision styling expert skilled in custom haircuts, smooth finishes, and tailored daily looks.',
+    image: ashwalImage
   },
   {
-    id: 'stylist-2',
-    name: 'Pooja D’Souza',
-    role: 'Senior Bridal Makeup & Styling Expert',
-    experienceYears: 9,
-    specialties: ['HD Bridal Makeup', 'Bridal Hair Architecture', 'Airbrush'],
-    bio: 'Specializing in Mangalorean and contemporary bridal looks, Pooja has styled over 450+ happy brides with photogenic perfection.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&auto=format&fit=crop&q=80',
-    rating: 4.8,
-    reviewsCount: 118,
-    instagramHandle: '@pooja_bridalglam'
+    id: 'abhishek',
+    name: 'Abhishek',
+    role: 'Hairstylist',
+    bio: 'Creative hairstylist focused on versatile cuts, trending styles, and healthy hair transformations.',
+    image: abhishekImage
   },
   {
-    id: 'stylist-3',
-    name: 'Kavita Acharya',
-    role: 'Senior Aesthetician & Skin Therapist',
-    experienceYears: 8,
-    specialties: ['Brightening Facials', 'Aromatherapy', 'Anti-Ageing Therapy'],
-    bio: 'Certified clinical cosmetologist passionate about customized skin renewal, herbal radiance therapies, and relaxing facial acupressure.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80',
-    rating: 4.8,
-    reviewsCount: 94,
-    instagramHandle: '@kavita_skintherapies'
+    id: 'veda',
+    name: 'Veda',
+    role: 'Skin & Hair Care Therapist',
+    bio: 'Blending advanced skin treatments with restorative hair care to rejuvenate and revive your natural glow.',
+    image: vedaImage
   },
   {
-    id: 'stylist-4',
-    name: 'Vikram Poojary',
-    role: 'Hair Colorist & Texture Specialist',
-    experienceYears: 7,
-    specialties: ['Cysteine Treatments', 'Global Highlights', 'Scalp Spa'],
-    bio: 'Master of texture and frizz control, Vikram brings healthy hair restoration techniques tailored to Mangalore’s coastal climate.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80',
-    rating: 4.7,
-    reviewsCount: 86,
-    instagramHandle: '@vikram_haircraft'
+    id: 'asha',
+    name: 'Asha',
+    role: 'Skin & Hair Care Therapist',
+    bio: 'Expert in customized facial therapies and deep hair conditioning treatments designed for total care and relaxation.',
+    image: ashaImage
+  },
+  {
+    id: 'ali',
+    name: 'Ali',
+    role: 'Men’s Hairstylist',
+    bio: 'Specializing in modern fades, precision cuts, and sharp grooming tailored to every client’s style.',
+    image: aliImage
+  },
+  {
+    id: 'sandhya',
+    name: 'Sandhya',
+    role: 'Skin Care Therapist',
+    bio: 'Dedicated to health-driven skincare, offering tailored facials, exfoliation, and soothing skin treatments.',
+    image: sandhyaImage
   }
 ];
 

@@ -37,12 +37,12 @@ export interface Stylist {
   id: string;
   name: string;
   role: string;
-  experienceYears: number;
-  specialties: string[];
   bio: string;
   image: string;
-  rating: number;
-  reviewsCount: number;
+  experienceYears?: number;
+  specialties?: string[];
+  rating?: number;
+  reviewsCount?: number;
   instagramHandle?: string;
 }
 
