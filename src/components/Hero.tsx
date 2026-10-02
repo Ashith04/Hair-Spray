@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, MapPin, Calendar, Star, Phone, Instagram, Check } from 'lucide-react';
+import { ArrowUpRight, MapPin, Calendar, Star, Phone, Instagram, Check, Scissors } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 import { SALON_INFO } from '../data/salonData';
 
@@ -100,21 +100,25 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Central Model Photography Layer */}
-          <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-            <div className="relative w-full max-w-[720px] h-full flex items-end justify-center">
+          {/* Authentic Salon Photography Layer (Real Salon Interior & Styling Stations) */}
+          <div className="absolute inset-0 z-0 flex items-center justify-end pointer-events-none overflow-hidden">
+            <div className="relative w-full lg:w-3/5 h-full flex items-center justify-end">
               <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1600&auto=format&fit=crop&q=85"
-                alt="Hair Spray Signature Hair Styling Model"
-                className="h-[105%] max-w-none sm:h-[110%] object-cover object-top filter contrast-[1.02] opacity-85 sm:opacity-90"
+                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&auto=format&fit=crop&q=85"
+                alt="Hair Spray Unisex Salon Styling Chairs & Interior - Kavoor Mangalore"
+                onError={(e) => {
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1600&auto=format&fit=crop&q=85';
+                }}
+                className="w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 opacity-80 sm:opacity-85 transition-opacity"
               />
-              {/* Soft radial vignette to ensure text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white/90 pointer-events-none" />
-              <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+              {/* Soft progressive gradient ensuring left text stays pristine and readable */}
+              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/90 to-transparent pointer-events-none" />
             </div>
           </div>
 
-          {/* Content Layout Over the Model */}
+          {/* Content Layout Over the Salon Photography */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto py-8 sm:py-12">
             {/* Left Headline & Action Button */}
             <div className="lg:col-span-6 flex flex-col items-start text-left">
@@ -140,14 +144,21 @@ export const Hero: React.FC = () => {
               </button>
             </div>
 
-            {/* Right Editorial Headline */}
+            {/* Right Editorial Headline & Salon Status Badge */}
             <div className="lg:col-span-6 flex flex-col items-start lg:items-end text-left lg:text-right">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-zinc-200 shadow-xs text-xs font-semibold text-zinc-800 mb-3">
+                <Scissors className="w-3.5 h-3.5 text-[#9E6868]" />
+                <span>Modern Unisex Salon & Spa · Kavoor</span>
+              </div>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-zinc-950 tracking-tight leading-[1.08]">
                 Natural Finish
               </h2>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-normal italic text-[#9E6868] tracking-tight leading-[1.08] mb-6">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-normal italic text-[#9E6868] tracking-tight leading-[1.08] mb-4">
                 Without Compromise
               </h2>
+              <p className="text-xs sm:text-sm text-zinc-600 max-w-sm font-medium leading-relaxed hidden sm:block">
+                Dedicated air-conditioned styling stations, hospital-grade sanitized tools, and scientific formaldehyde-free bond repair therapies.
+              </p>
             </div>
           </div>
 

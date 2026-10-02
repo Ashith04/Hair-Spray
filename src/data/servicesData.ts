@@ -187,7 +187,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Traditional close shave with foam lather, sterile single-use blade, and refreshing cooling splash.',
     subServices: ['Lather Cream Prep', 'Straight Blade Shave', 'Cold Towel Compress', 'Aftershave Splash'],
     benefits: ['Baby-smooth skin', 'Hygienic single-use blade'],
-    image: 'https://images.unsplash.com/photo-1517832606589-7629c3395907?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'HAIR CARE'
   },
   {
@@ -381,7 +381,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Sweet almond oil rich in Vitamin E, magnesium, and fatty acids to promote root growth and soften coarse strands.',
     subServices: ['Pure Almond Oil', 'Deep Head & Shoulder Massage', 'Acupressure Relief'],
     benefits: ['Vitamin E root nourishment', 'Silky hair sheen'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'HEAD MASSAGE'
   },
   {
@@ -424,7 +424,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Infused with sacred lotus botanicals to purify, detoxify, and replenish moisture balance.',
     subServices: ['Lotus Cleanser', 'Herbal Exfoliator', 'Hydrating Massage', 'Lotus Petal Mask'],
     benefits: ['Softens skin texture', 'Gentle on sensitive skin'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'FACIAL'
   },
   {
@@ -492,7 +492,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     popular: true,
     subServices: ['Whitening Cleanser', 'Micro-Derm Scrub', 'Brightening Serum Infusion', 'Radiance Rubber Mask'],
     benefits: ['Visibly brightens complexion', 'Fades dark spots'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'FACIAL'
   },
   {
@@ -531,7 +531,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'High-potency antioxidant facial derived from acai, blueberry, and cranberry extracts to shield against environmental pollutants.',
     subServices: ['Berry Extract Wash', 'Berry Seed Exfoliator', 'Antioxidant Massage', 'Revitalizing Berry Gel Pack'],
     benefits: ['Defends against free radicals', 'Restores vibrant rosy glow'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'FACIAL'
   },
   {
@@ -559,7 +559,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     popular: true,
     subServices: ['Ascorbic Cleanser', 'Citrus Scrub', 'Pure Vit C Serum Infusion', 'Glow Booster Mask'],
     benefits: ['Fades sun spots', 'Glass-skin illumination'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'FACIAL'
   },
   {
@@ -642,7 +642,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Herbal lotus clean-up for sensitive or oily skin, unclogging pores and imparting instant clarity.',
     subServices: ['Lotus Scrub', 'Gentle Extraction', 'Lotus Calming Gel'],
     benefits: ['Pore purification', 'Non-drying gentle formula'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'CLEAN-UP'
   },
   {
@@ -690,7 +690,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Targets dark rings and sun discoloration on the front and back of neck.',
     subServices: ['Neck Scrub', 'De-Tan Pack', 'Hydrating Lotion'],
     benefits: ['Evens out collar line tone', 'Smoothes neck folds'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'DE-TAN'
   },
   {
@@ -791,7 +791,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Enriched with active oxygen molecules for gentle, sting-free bleaching and pore revitalization.',
     subServices: ['Oxygenating Pre-Cream', 'Oxy Formula', 'Rose Water Toner'],
     benefits: ['Sting-free formula', 'Safe for delicate facial skin'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'BLEACH'
   },
   {
@@ -890,7 +890,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     description: 'Full facial hair removal covering cheeks, sideburns, chin, and upper lip.',
     subServices: ['Skin Powder Prep', 'Gentle Wax Pull', 'Cooling Chamomile Gel'],
     benefits: ['Flawless makeup canvas', 'Stays clean for 3-4 weeks'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'WAXING'
   },
   {
@@ -1041,7 +1041,7 @@ export const SERVICES_LIST: ServiceItem[] = [
     popular: true,
     subServices: ['Protective Oil', 'Full Face Hard Peel', 'Soothing Ice Roller Finish'],
     benefits: ['Gentle on sensitive facial skin', 'No redness or rashes'],
-    image: 'https://images.unsplash.com/photo-1512290900672-1f48037a3c3e?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&auto=format&fit=crop&q=80',
     brochureSection: 'PEEL WAX'
   },
   {
