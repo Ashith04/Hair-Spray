@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'motion/react';
-import { Clock, CheckCircle2, Phone, MapPin, Wind, ShieldCheck, CreditCard } from 'lucide-react';
+import { Clock, Phone, Wind, ShieldCheck, CreditCard, ArrowRight } from 'lucide-react';
 import { SALON_TIMINGS, SALON_INFO } from '../data/salonData';
 import { useBooking } from '../context/BookingContext';
 
@@ -42,9 +42,15 @@ export const TimingsSection: React.FC = () => {
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           {/* Left Column: Heading & Live Status */}
-          <div className="lg:col-span-6 flex flex-col items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col items-start"
+          >
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Operating Schedule</span>
             </div>
 
@@ -57,7 +63,10 @@ export const TimingsSection: React.FC = () => {
             </p>
 
             {/* Live Status Badge */}
-            <div className="p-6 rounded-[24px] bg-[#FAFAFA] border border-zinc-200 w-full mb-8 flex items-center justify-between flex-wrap gap-4 shadow-xs">
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              className="p-6 rounded-[24px] bg-[#FAFAFA] border border-zinc-200 w-full mb-8 flex items-center justify-between flex-wrap gap-4 shadow-xs hover:border-zinc-300 transition-colors"
+            >
               <div className="flex items-center gap-3.5">
                 <div className={`w-3 h-3 rounded-full ${currentStatus.isOpen ? 'bg-emerald-600 shadow-md shadow-emerald-600/30 animate-pulse' : 'bg-amber-500'}`} />
                 <div>
@@ -77,38 +86,46 @@ export const TimingsSection: React.FC = () => {
                 </div>
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => openBooking()}
-                className="px-5 py-2.5 rounded-full bg-zinc-900 text-white hover:bg-black text-xs font-sans uppercase tracking-wider font-semibold transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
+                className="px-5 py-2.5 rounded-full bg-zinc-900 text-white hover:bg-black text-xs font-sans uppercase tracking-wider font-semibold transition-all cursor-pointer shadow-xs"
               >
                 Book Today
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Amenities list */}
             <div className="grid grid-cols-2 gap-3 w-full font-sans text-xs">
-              <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium">
+              <motion.div whileHover={{ y: -3 }} className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium transition-colors hover:bg-white hover:shadow-xs">
                 <Wind className="w-4 h-4 text-zinc-400 shrink-0" />
                 <span>Central A/C Lounge</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium">
+              </motion.div>
+              <motion.div whileHover={{ y: -3 }} className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium transition-colors hover:bg-white hover:shadow-xs">
                 <ShieldCheck className="w-4 h-4 text-[#9E6868] shrink-0" />
                 <span>Autoclaved Utensils</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium">
+              </motion.div>
+              <motion.div whileHover={{ y: -3 }} className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium transition-colors hover:bg-white hover:shadow-xs">
                 <CreditCard className="w-4 h-4 text-zinc-400 shrink-0" />
                 <span>UPI & Cards Accepted</span>
-              </div>
-              <div className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium">
+              </motion.div>
+              <motion.div whileHover={{ y: -3 }} className="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center gap-2.5 text-zinc-700 font-medium transition-colors hover:bg-white hover:shadow-xs">
                 <Phone className="w-4 h-4 text-[#9E6868] shrink-0" />
                 <span>+91 74879 68588</span>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Schedule Table Card */}
-          <div className="lg:col-span-6">
-            <div className="p-8 sm:p-10 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6"
+          >
+            <div className="p-8 sm:p-10 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 shadow-sm hover:border-zinc-300 transition-colors">
               <div className="flex items-center justify-between pb-4 mb-5 border-b border-zinc-200">
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-[#9E6868]" />
@@ -162,13 +179,14 @@ export const TimingsSection: React.FC = () => {
                 </span>
                 <a
                   href={`tel:${SALON_INFO.phoneClean}`}
-                  className="font-semibold text-zinc-900 hover:text-black hover:underline whitespace-nowrap"
+                  className="font-semibold text-zinc-900 hover:text-black hover:underline whitespace-nowrap flex items-center gap-1.5"
                 >
-                  Call +91 74879 68588 →
+                  <span>Call +91 74879 68588</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

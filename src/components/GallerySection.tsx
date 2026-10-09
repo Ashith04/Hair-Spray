@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Eye, X, ChevronLeft, ChevronRight, Sliders, ArrowLeftRight } from 'lucide-react';
+import { Eye, X, ChevronLeft, ChevronRight, ArrowLeftRight } from 'lucide-react';
 import { GALLERY_ITEMS } from '../data/salonData';
 import { GalleryItem } from '../types';
 
@@ -46,10 +46,16 @@ export const GallerySection: React.FC = () => {
     <section id="gallery" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-white text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Visual Archive</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -77,11 +83,17 @@ export const GallerySection: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Featured Interactive Before / After Comparison Widget */}
-        <div className="mb-14 max-w-4xl mx-auto">
-          <div className="p-6 sm:p-8 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 shadow-xs">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="mb-14 max-w-4xl mx-auto"
+        >
+          <div className="p-6 sm:p-8 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 hover:border-zinc-300 transition-colors shadow-xs">
             <div className="flex items-center justify-between mb-5 font-sans">
               <div className="flex items-center gap-3">
                 <span className="p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-[#9E6868] shadow-2xs">
@@ -153,19 +165,20 @@ export const GallerySection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Masonry / Grid of Gallery Thumbnails */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredGallery.map((item, idx) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              initial={{ opacity: 0, y: 25, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.15 }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
+              transition={{ duration: 0.4, delay: (idx % 6) * 0.06 }}
               onClick={() => setSelectedImageIndex(idx)}
-              className="rounded-[24px] overflow-hidden bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md group cursor-pointer transition-all relative aspect-[4/3] shadow-xs"
+              className="rounded-[24px] overflow-hidden bg-white border border-zinc-200 hover:border-zinc-400 hover:shadow-xl group cursor-pointer transition-all duration-300 relative aspect-[4/3] shadow-xs"
             >
               <img
                 src={item.imageUrl}
@@ -173,7 +186,7 @@ export const GallerySection: React.FC = () => {
                 onError={(e) => {
                   e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&auto=format&fit=crop&q=80';
                 }}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white font-sans">
                 <span className="text-[10px] font-semibold text-amber-300 uppercase tracking-wider mb-1">

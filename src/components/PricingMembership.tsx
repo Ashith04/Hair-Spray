@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'motion/react';
-import { Check, Crown, Zap, Shield, ArrowRight, Star, ChevronDown, ChevronUp, Layers, Scissors } from 'lucide-react';
+import { Check, Award, Star, ArrowUpRight, Scissors, User, Layers, ChevronDown, ChevronUp } from 'lucide-react';
 import { MEMBERSHIP_PLANS, SERVICES_LIST } from '../data/salonData';
 import { ServiceCategory } from '../types';
 import { useBooking } from '../context/BookingContext';
@@ -71,10 +71,16 @@ export const PricingMembership: React.FC = () => {
     <section id="pricing" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-[#FAFAFA] text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Transparent Rates & Privilege</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -84,17 +90,17 @@ export const PricingMembership: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
             Choose single transparent services or join our exclusive VIP Memberships to receive dedicated appointments and up to 40% privilege savings.
           </p>
-        </div>
+        </motion.div>
 
         {/* Toggle Tabs */}
         <div className="flex justify-center mb-14">
-          <div className="inline-flex p-1 rounded-full bg-zinc-200/70 border border-zinc-300">
+          <div className="inline-flex p-1 rounded-full bg-zinc-200/70 border border-zinc-300 shadow-inner">
             <button
               id="pricing-tab-membership"
               onClick={() => setActiveTab('membership')}
               className={`px-6 py-2.5 rounded-full text-xs font-sans font-medium transition-all duration-200 cursor-pointer ${
                 activeTab === 'membership'
-                  ? 'bg-white text-zinc-950 font-semibold shadow-xs'
+                  ? 'bg-white text-zinc-950 font-semibold shadow-xs scale-102'
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
@@ -105,7 +111,7 @@ export const PricingMembership: React.FC = () => {
               onClick={() => setActiveTab('single')}
               className={`px-6 py-2.5 rounded-full text-xs font-sans font-medium transition-all duration-200 cursor-pointer ${
                 activeTab === 'single'
-                  ? 'bg-white text-zinc-950 font-semibold shadow-xs'
+                  ? 'bg-white text-zinc-950 font-semibold shadow-xs scale-102'
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
@@ -122,18 +128,20 @@ export const PricingMembership: React.FC = () => {
               return (
                 <motion.div
                   key={plan.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: idx * 0.1 }}
+                  initial={{ opacity: 0, y: 35, scale: 0.97 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.25, ease: 'easeOut' } }}
+                  transition={{ duration: 0.45, delay: idx * 0.1 }}
                   className={`rounded-[28px] p-8 sm:p-10 flex flex-col justify-between relative transition-all duration-300 ${
                     isPopular
-                      ? 'bg-white border-2 border-zinc-900 shadow-xl lg:-translate-y-2'
-                      : 'bg-white border border-zinc-200 shadow-xs hover:shadow-md'
+                      ? 'bg-white border-2 border-zinc-900 shadow-xl hover:shadow-2xl lg:-translate-y-2'
+                      : 'bg-white border border-zinc-200 hover:border-zinc-400 shadow-xs hover:shadow-xl'
                   }`}
                 >
                   {/* Popular Ribbon */}
                   {isPopular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-sans font-semibold shadow-md flex items-center gap-1.5">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-zinc-900 text-white text-[11px] font-sans font-semibold shadow-md flex items-center gap-1.5 animate-bounce-subtle">
                       <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                       <span>Most Popular VIP</span>
                     </div>
@@ -151,7 +159,7 @@ export const PricingMembership: React.FC = () => {
                         </p>
                       </div>
                       <span className={`p-2.5 rounded-2xl ${isPopular ? 'bg-zinc-100 text-zinc-900' : 'bg-zinc-100 text-zinc-500'}`}>
-                        <Crown className="w-5 h-5" />
+                        <Award className="w-5 h-5" />
                       </span>
                     </div>
 
@@ -187,20 +195,22 @@ export const PricingMembership: React.FC = () => {
                   </div>
 
                   {/* Choose Plan CTA */}
-                  <button
+                  <motion.button
                     id={`select-plan-${plan.id}`}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => {
                       openBooking(null, null);
                     }}
                     className={`w-full py-4 rounded-full text-xs font-sans uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
                       isPopular
-                        ? 'bg-zinc-900 text-white hover:bg-black shadow-md hover:scale-105 active:scale-95'
+                        ? 'bg-zinc-900 text-white hover:bg-black shadow-md'
                         : 'border border-zinc-300 text-zinc-800 hover:bg-zinc-100 font-semibold'
                     }`}
                   >
                     <span>Join {plan.name}</span>
-                    <span>↗</span>
-                  </button>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </motion.button>
                 </motion.div>
               );
             })}
@@ -233,11 +243,11 @@ export const PricingMembership: React.FC = () => {
                 onClick={() => handleAudienceChange('women')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer ${
                   audience === 'women'
-                    ? 'bg-rose-900 text-white shadow-xs'
-                    : 'text-zinc-600 hover:text-rose-900 hover:bg-rose-50'
+                    ? 'bg-zinc-900 text-white shadow-xs'
+                    : 'text-zinc-600 hover:text-zinc-950 hover:bg-white/60'
                 }`}
               >
-                <span className="w-2 h-2 rounded-full bg-rose-400" />
+                <User className="w-3.5 h-3.5" />
                 <span>Women & Girls</span>
               </button>
 
@@ -247,10 +257,10 @@ export const PricingMembership: React.FC = () => {
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer ${
                   audience === 'men'
                     ? 'bg-zinc-900 text-white shadow-xs'
-                    : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200'
+                    : 'text-zinc-600 hover:text-zinc-950 hover:bg-white/60'
                 }`}
               >
-                <Scissors className="w-3.5 h-3.5 text-sky-400" />
+                <Scissors className="w-3.5 h-3.5" />
                 <span>Men & Boys</span>
               </button>
             </div>
@@ -336,9 +346,10 @@ export const PricingMembership: React.FC = () => {
                     </div>
                     <button
                       onClick={() => openBooking(service)}
-                      className="px-4 py-2 rounded-full bg-zinc-900 hover:bg-black text-white text-xs font-sans uppercase tracking-wider font-semibold hover:scale-105 transition-transform shrink-0 cursor-pointer shadow-2xs"
+                      className="px-4 py-2 rounded-full bg-zinc-900 hover:bg-black text-white text-xs font-sans uppercase tracking-wider font-semibold hover:scale-105 transition-transform shrink-0 cursor-pointer shadow-2xs flex items-center gap-1"
                     >
-                      Book ↗
+                      <span>Book</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>

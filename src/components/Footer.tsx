@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MapPin, Instagram, MessageCircle, ArrowUp, Heart, ShieldCheck } from 'lucide-react';
+import { Phone, MapPin, ArrowUp, ShieldCheck, Star, RotateCcw } from 'lucide-react';
 import { SALON_INFO, SERVICES_LIST } from '../data/salonData';
 import { useBooking } from '../context/BookingContext';
 import { SalonLogo } from './SalonLogo';
@@ -53,8 +53,9 @@ export const Footer: React.FC = () => {
                 <ShieldCheck className="w-3.5 h-3.5 text-[#9E6868]" />
                 <span>9 Years (Est. 2017)</span>
               </div>
-              <div className="px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 font-semibold">
-                4.7 ★ (301 Reviews)
+              <div className="px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 font-semibold flex items-center gap-1.5">
+                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                <span>4.7 (301 Reviews)</span>
               </div>
             </div>
           </div>
@@ -170,7 +171,8 @@ export const Footer: React.FC = () => {
               className="px-3 py-1.5 rounded-full border border-zinc-200 text-[11px] font-sans text-zinc-600 hover:text-zinc-950 hover:border-zinc-400 hover:bg-zinc-50 transition-all cursor-pointer flex items-center gap-1.5"
               title="Replay intro animation"
             >
-              <span>Replay Intro Animation ↺</span>
+              <RotateCcw className="w-3.5 h-3.5 text-zinc-500" />
+              <span>Replay Intro Animation</span>
             </button>
 
             <button

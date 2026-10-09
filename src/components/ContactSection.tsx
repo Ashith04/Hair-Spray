@@ -7,9 +7,7 @@ import {
   Clock,
   Instagram,
   Navigation,
-  Send,
-  CheckCircle2,
-  Mail
+  Star
 } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
 
@@ -35,10 +33,16 @@ export const ContactSection: React.FC = () => {
     <section id="contact" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-[#FAFAFA] text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Find & Inquire</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -48,12 +52,18 @@ export const ContactSection: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
             Conveniently situated adjacent to Union Bank at Kavoor Junction with dedicated parking, climate-controlled comfort, and hospitable staff.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Contact Card */}
-          <div className="lg:col-span-6 flex flex-col gap-6">
-            <div className="p-8 sm:p-10 rounded-[28px] bg-white border border-zinc-200 shadow-xs flex-1 flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col gap-6"
+          >
+            <div className="p-8 sm:p-10 rounded-[28px] bg-white border border-zinc-200 hover:border-zinc-300 transition-colors shadow-xs flex-1 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-8 flex-wrap gap-2">
                   <h3 className="text-2xl font-serif font-bold text-zinc-950">
@@ -65,7 +75,7 @@ export const ContactSection: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-800 text-xs font-sans font-semibold hover:bg-zinc-200 transition-colors"
                   >
-                    <span className="text-[#9E6868] font-bold">★</span>
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     <span>Justdial 4.7 (301 Reviews)</span>
                   </a>
                 </div>
@@ -149,40 +159,52 @@ export const ContactSection: React.FC = () => {
 
               {/* Action Buttons: WhatsApp + Call + Instagram */}
               <div className="pt-8 mt-8 border-t border-zinc-100 flex flex-wrap gap-3 font-sans text-xs">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
                   href={`https://wa.me/${SALON_INFO.phoneClean}?text=${encodeURIComponent(SALON_INFO.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 min-w-[140px] py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center justify-center gap-2 shadow-xs hover:scale-105 transition-all"
+                  className="flex-1 min-w-[140px] py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>WhatsApp Desk</span>
-                </a>
+                </motion.a>
 
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
                   href={`tel:${SALON_INFO.phoneClean}`}
-                  className="flex-1 min-w-[140px] py-3.5 rounded-full bg-zinc-900 text-white hover:bg-black font-semibold flex items-center justify-center gap-2 shadow-xs hover:scale-105 transition-all"
+                  className="flex-1 min-w-[140px] py-3.5 rounded-full bg-zinc-900 text-white hover:bg-black font-semibold flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Direct Call</span>
-                </a>
+                </motion.a>
 
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   href={SALON_INFO.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-full border border-zinc-300 text-zinc-700 hover:text-black hover:bg-zinc-100 hover:scale-105 transition-all"
+                  className="p-3.5 rounded-full border border-zinc-300 text-zinc-700 hover:text-black hover:bg-zinc-100 transition-all cursor-pointer"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4" />
-                </a>
+                </motion.a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Interactive Map */}
-          <div className="lg:col-span-6 flex flex-col">
-            <div className="p-4 sm:p-6 rounded-[28px] bg-white border border-zinc-200 shadow-xs flex-1 flex flex-col justify-between overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col"
+          >
+            <div className="p-4 sm:p-6 rounded-[28px] bg-white border border-zinc-200 hover:border-zinc-300 transition-colors shadow-xs flex-1 flex flex-col justify-between overflow-hidden">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-video w-full bg-zinc-100 border border-zinc-200">
                 <iframe
                   title="Hair Spray Unisex Salon Kavoor Map"
@@ -217,18 +239,20 @@ export const ContactSection: React.FC = () => {
                   </p>
                 </div>
 
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   href={SALON_INFO.googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-full bg-zinc-900 text-white hover:bg-black text-xs font-semibold flex items-center gap-2 transition-all hover:scale-105 whitespace-nowrap shadow-xs cursor-pointer"
+                  className="px-5 py-2.5 rounded-full bg-zinc-900 text-white hover:bg-black text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap shadow-xs cursor-pointer"
                 >
                   <Navigation className="w-3.5 h-3.5" />
                   <span>Get Driving Directions</span>
-                </a>
+                </motion.a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

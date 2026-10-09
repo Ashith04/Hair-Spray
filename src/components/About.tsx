@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Pause, ChevronLeft, ChevronRight, Check, ArrowUpRight, Camera, Sparkles } from 'lucide-react';
+import { Play, Pause, ChevronLeft, ChevronRight, Check, ArrowUpRight, Camera, Star } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
 
 export const About: React.FC = () => {
@@ -63,7 +63,8 @@ export const About: React.FC = () => {
       desc: 'Established 2017 in Kavoor'
     },
     {
-      num: '4.7★',
+      num: '4.7',
+      hasStar: true,
       label: 'Google Rating',
       desc: 'Based on 301 verified reviews'
     },
@@ -92,10 +93,16 @@ export const About: React.FC = () => {
     <section id="about" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-white text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-16"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Our Legacy & Philosophy</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -105,12 +112,18 @@ export const About: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
             9 years of unwavering commitment to personalized styling, scientific bond repair therapy, and luxury unisex beauty care in Mangalore.
           </p>
-        </div>
+        </motion.div>
 
         {/* Two-Column About Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch mb-16">
           {/* Left Column: Salon Story */}
-          <div className="lg:col-span-6 flex flex-col justify-between p-8 sm:p-10 rounded-[28px] bg-[#FAFAFA] border border-zinc-200">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 flex flex-col justify-between p-8 sm:p-10 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 hover:border-zinc-300 transition-colors shadow-xs"
+          >
             <div>
               <span className="font-sans text-xs uppercase tracking-wider text-zinc-500 font-semibold block mb-4">
                 Since 2017 · Mangalore
@@ -130,8 +143,8 @@ export const About: React.FC = () => {
             <div className="space-y-3.5 pt-6 border-t border-zinc-200">
               {highlights.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-zinc-100 border border-zinc-200 text-[#9E6868] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                    ✓
+                  <span className="w-5 h-5 rounded-full bg-zinc-100 border border-zinc-200 text-[#9E6868] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <Check className="w-3 h-3 text-[#9E6868]" strokeWidth={2.5} />
                   </span>
                   <span className="text-xs sm:text-sm text-zinc-800 font-medium">
                     {item}
@@ -139,10 +152,16 @@ export const About: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Interactive Virtual Studio Tour Showcase */}
-          <div className="lg:col-span-6 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 p-4 sm:p-5 flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 p-4 sm:p-5 flex flex-col justify-between hover:border-zinc-300 transition-colors shadow-xs"
+          >
             <div className="relative rounded-2xl overflow-hidden aspect-video bg-zinc-950 group">
               <AnimatePresence mode="wait">
                 <motion.img
@@ -227,17 +246,29 @@ export const About: React.FC = () => {
               <span>Interactive 5-Zone Studio Experience</span>
               <span className="text-[#9E6868] font-bold">Kavoor Junction, Mangalore</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Precision Architectural Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-zinc-200 rounded-[24px] bg-white divide-y md:divide-y-0 md:divide-x divide-zinc-200 overflow-hidden shadow-xs">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-2 md:grid-cols-4 border border-zinc-200 rounded-[24px] bg-white divide-y md:divide-y-0 md:divide-x divide-zinc-200 overflow-hidden shadow-xs"
+        >
           {stats.map((stat, idx) => (
-            <div key={idx} className="p-6 sm:p-8 flex flex-col justify-between bg-white hover:bg-zinc-50/50 transition-colors">
-              <span className="font-sans text-xs text-stone-400 mb-3 font-bold">0{idx + 1}</span>
+            <motion.div
+              key={idx}
+              whileHover={{ y: -4, backgroundColor: 'rgba(250, 250, 250, 1)' }}
+              transition={{ duration: 0.2 }}
+              className="p-6 sm:p-8 flex flex-col justify-between bg-white transition-all duration-300 cursor-default group"
+            >
+              <span className="font-sans text-xs text-stone-400 mb-3 font-bold group-hover:text-[#9E6868] transition-colors">0{idx + 1}</span>
               <div>
-                <span className="text-3xl sm:text-4xl font-serif font-bold text-zinc-950 block mb-1">
-                  {stat.num}
+                <span className="text-3xl sm:text-4xl font-serif font-bold text-zinc-950 flex items-center gap-1 mb-1 group-hover:scale-105 origin-left transition-transform duration-300">
+                  <span>{stat.num}</span>
+                  {stat.hasStar && <Star className="w-6 h-6 fill-amber-400 text-amber-400 inline" />}
                 </span>
                 <span className="text-xs sm:text-sm font-semibold text-zinc-800 block">
                   {stat.label}
@@ -246,9 +277,9 @@ export const About: React.FC = () => {
                   {stat.desc}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

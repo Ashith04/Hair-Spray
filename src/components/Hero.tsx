@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, MapPin, Calendar, Star, Phone, Instagram, Check, Scissors } from 'lucide-react';
+import { ArrowUpRight, MapPin, Calendar, Star, Phone, Instagram, MessageCircle, Scissors } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 import { SALON_INFO } from '../data/salonData';
 
@@ -76,19 +76,19 @@ export const Hero: React.FC = () => {
                 href={SALON_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-9 h-9 rounded-full border border-zinc-200 bg-white hover:bg-zinc-100 flex items-center justify-center text-zinc-800 hover:scale-105 transition-all text-xs font-semibold shadow-xs"
+                aria-label="Instagram Profile"
+                className="w-9 h-9 rounded-full border border-zinc-200 bg-white hover:bg-zinc-100 flex items-center justify-center text-zinc-800 hover:scale-105 transition-all shadow-xs"
               >
-                In
+                <Instagram className="w-4 h-4 text-zinc-800" />
               </a>
               <a
                 href={`https://wa.me/${SALON_INFO.phoneClean}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="w-9 h-9 rounded-full border border-zinc-200 bg-white hover:bg-zinc-100 flex items-center justify-center text-zinc-800 hover:scale-105 transition-all text-xs font-semibold shadow-xs"
+                aria-label="WhatsApp Chat"
+                className="w-9 h-9 rounded-full border border-zinc-200 bg-white hover:bg-zinc-100 flex items-center justify-center text-zinc-800 hover:scale-105 transition-all shadow-xs"
               >
-                Wa
+                <MessageCircle className="w-4 h-4 text-zinc-800" />
               </a>
               <button
                 onClick={() => openBooking()}
@@ -121,7 +121,12 @@ export const Hero: React.FC = () => {
           {/* Content Layout Over the Salon Photography */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto py-8 sm:py-12">
             {/* Left Headline & Action Button */}
-            <div className="lg:col-span-6 flex flex-col items-start text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-6 flex flex-col items-start text-left"
+            >
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[58px] font-serif font-bold text-zinc-950 leading-[1.06] tracking-tight mb-4">
                 Signature Hair <br />
                 <span className="font-normal italic text-zinc-700">In 2–3 Hours</span>
@@ -132,24 +137,34 @@ export const Hero: React.FC = () => {
               </p>
 
               {/* High-Contrast Obsidian Pill Button */}
-              <button
+              <motion.button
                 id="hero-main-cta-btn"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => openBooking()}
-                className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-zinc-900 hover:bg-black text-white text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all shadow-lg shadow-zinc-900/15 hover:scale-105 active:scale-98 cursor-pointer"
+                className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-zinc-900 hover:bg-black text-white text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all shadow-lg shadow-zinc-900/15 cursor-pointer"
               >
                 <span>Book VIP Appointment</span>
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                   <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                 </span>
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
 
             {/* Right Editorial Headline & Salon Status Badge */}
-            <div className="lg:col-span-6 flex flex-col items-start lg:items-end text-left lg:text-right">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-zinc-200 shadow-xs text-xs font-semibold text-zinc-800 mb-3">
+            <motion.div
+              initial={{ opacity: 0, y: 35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-6 flex flex-col items-start lg:items-end text-left lg:text-right"
+            >
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-zinc-200 shadow-xs text-xs font-semibold text-zinc-800 mb-3 cursor-default"
+              >
                 <Scissors className="w-3.5 h-3.5 text-[#9E6868]" />
                 <span>Modern Unisex Salon & Spa · Kavoor</span>
-              </div>
+              </motion.div>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-zinc-950 tracking-tight leading-[1.08]">
                 Natural Finish
               </h2>
@@ -159,7 +174,7 @@ export const Hero: React.FC = () => {
               <p className="text-xs sm:text-sm text-zinc-600 max-w-sm font-medium leading-relaxed hidden sm:block">
                 Dedicated air-conditioned styling stations, hospital-grade sanitized tools, and scientific formaldehyde-free bond repair therapies.
               </p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Bottom Floating Feature Card (Bottom-Right Positioned) */}
@@ -171,7 +186,13 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Right Floating Frosted Glass Card */}
-            <div className="ml-auto w-full sm:w-auto max-w-sm rounded-2xl bg-white/90 backdrop-blur-xl border border-zinc-200 p-4 sm:p-5 shadow-lg text-zinc-900">
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+              className="ml-auto w-full sm:w-auto max-w-sm rounded-2xl bg-white/90 backdrop-blur-xl border border-zinc-200 hover:border-zinc-300 p-4 sm:p-5 shadow-lg text-zinc-900 cursor-default"
+            >
               {/* Bullet Points with Star/Asterisk Glyph */}
               <ul className="space-y-2 text-xs font-medium text-zinc-700 mb-4">
                 <li className="flex items-start gap-2">
@@ -227,7 +248,7 @@ export const Hero: React.FC = () => {
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

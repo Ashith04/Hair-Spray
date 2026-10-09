@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Star, MessageSquare, CheckCircle2, ThumbsUp, Plus, X } from 'lucide-react';
+import { Star, CheckCircle2, ThumbsUp, Plus, X } from 'lucide-react';
 import { REVIEWS_LIST, SALON_INFO, SERVICES_LIST } from '../data/salonData';
 import { ReviewItem } from '../types';
 
@@ -86,10 +86,16 @@ export const ReviewsSection: React.FC = () => {
     <section id="reviews" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-white text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Client Perspectives</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -99,12 +105,18 @@ export const ReviewsSection: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
             Real guest feedback from over 5,000 satisfied clients across Mangalore, Kavoor, and surrounding coastal districts.
           </p>
-        </div>
+        </motion.div>
 
         {/* Aggregate Breakdown + Summary Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14">
           {/* Big Rating Summary Block */}
-          <div className="lg:col-span-4 p-8 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 text-center flex flex-col items-center justify-center shadow-xs">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            whileHover={{ y: -4, transition: { duration: 0.25 } }}
+            className="lg:col-span-4 p-8 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 hover:border-zinc-300 text-center flex flex-col items-center justify-center shadow-xs transition-colors"
+          >
             <span className="text-6xl sm:text-7xl font-serif font-bold text-zinc-950 tracking-tight">
               4.7
             </span>
@@ -120,18 +132,25 @@ export const ReviewsSection: React.FC = () => {
               Based on {SALON_INFO.reviewsCount} verified reviews
             </p>
 
-            <button
+            <motion.button
               id="write-review-trigger-btn"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => setIsWriteModalOpen(true)}
-              className="w-full py-3.5 rounded-full bg-zinc-900 hover:bg-black text-white text-xs font-sans uppercase tracking-wider font-semibold flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-xs"
+              className="w-full py-3.5 rounded-full bg-zinc-900 hover:bg-black text-white text-xs font-sans uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
             >
               <Plus className="w-4 h-4" />
               <span>Write a Review</span>
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
 
           {/* Detailed Star Distribution Bars */}
-          <div className="lg:col-span-8 p-8 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 flex flex-col justify-center shadow-xs">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            className="lg:col-span-8 p-8 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 flex flex-col justify-center shadow-xs"
+          >
             <h3 className="text-lg font-serif font-bold text-zinc-950 mb-6">
               Distribution & Breakdown
             </h3>
@@ -145,7 +164,7 @@ export const ReviewsSection: React.FC = () => {
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${row.percent}%` }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       transition={{ duration: 0.6, delay: idx * 0.1 }}
                       className="h-full bg-zinc-900 rounded-full"
                     />
@@ -156,7 +175,7 @@ export const ReviewsSection: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Reviews Cards Grid */}
@@ -164,11 +183,12 @@ export const ReviewsSection: React.FC = () => {
           {reviews.map((review, idx) => (
             <motion.div
               key={review.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: idx * 0.05 }}
-              className="p-7 rounded-[24px] bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md flex flex-col justify-between transition-all shadow-xs"
+              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.15 }}
+              whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
+              transition={{ duration: 0.4, delay: (idx % 6) * 0.06 }}
+              className="p-7 rounded-[24px] bg-white border border-zinc-200 hover:border-zinc-400 hover:shadow-xl flex flex-col justify-between transition-all duration-300 shadow-xs cursor-default"
             >
               <div>
                 {/* Reviewer Header */}

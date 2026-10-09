@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Phone, Calendar } from 'lucide-react';
+import { Menu, X, Phone, Calendar, ArrowUpRight } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 import { SALON_INFO } from '../data/salonData';
 import { SalonLogo } from './SalonLogo';
@@ -152,7 +152,7 @@ export const Navbar: React.FC = () => {
             className="flex items-center gap-2 bg-zinc-900 text-white hover:bg-black px-4 sm:px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
           >
             <span>Book Now</span>
-            <span className="text-[11px] text-zinc-300">↗</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300" />
           </button>
 
           {/* Mobile Hamburger Menu Toggle */}
@@ -216,9 +216,10 @@ export const Navbar: React.FC = () => {
                     setMobileMenuOpen(false);
                     openBooking();
                   }}
-                  className="flex-1 py-3 text-center rounded-xl bg-zinc-900 hover:bg-black text-white text-xs font-bold uppercase tracking-wider"
+                  className="flex-1 py-3 text-center rounded-xl bg-zinc-900 hover:bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5"
                 >
-                  Book Online ↗
+                  <span>Book Online</span>
+                  <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>
             </div>

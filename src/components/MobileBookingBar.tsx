@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Phone } from 'lucide-react';
+import { Calendar, Phone, Star } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 import { SALON_INFO } from '../data/salonData';
 
@@ -25,8 +25,9 @@ export const MobileBookingBar: React.FC = () => {
           <p className="text-xs font-serif font-bold text-zinc-950 truncate">
             Hair Spray Unisex Salon
           </p>
-          <p className="text-[10px] font-sans text-zinc-500 truncate font-medium">
-            4.7 ★ (301 Reviews) · Kavoor, Mangalore
+          <p className="text-[10px] font-sans text-zinc-500 truncate font-medium flex items-center gap-1">
+            <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400 shrink-0" />
+            <span>4.7 (301 Reviews) · Kavoor, Mangalore</span>
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CalendarCheck, MessagesSquare, Scissors, Award, Check } from 'lucide-react';
+import { CalendarCheck, MessageSquare, Scissors, Award, Check } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
 
 export const HowWeWork: React.FC = () => {
@@ -13,7 +13,6 @@ export const HowWeWork: React.FC = () => {
       subtitle: 'Pick Service & Slot',
       description: 'Select your preferred treatment, master stylist, and convenient date & time slot with instant WhatsApp confirmation.',
       icon: CalendarCheck,
-      color: 'from-[#6C4FD6] to-[#8B6BE8]',
       highlight: 'Instant Confirmation'
     },
     {
@@ -21,8 +20,7 @@ export const HowWeWork: React.FC = () => {
       title: 'Consult',
       subtitle: 'Personalized Diagnosis',
       description: 'Receive a 1-on-1 hair texture, porosity & skin analysis to customize products specifically to your face profile.',
-      icon: MessagesSquare,
-      color: 'from-[#8B6BE8] to-[#9B7CFF]',
+      icon: MessageSquare,
       highlight: '100% Customized'
     },
     {
@@ -31,7 +29,6 @@ export const HowWeWork: React.FC = () => {
       subtitle: 'Master Care in AC Comfort',
       description: 'Relax in our air-conditioned lounge while certified specialists execute your precision cut, keratin therapy, or facial.',
       icon: Scissors,
-      color: 'from-[#9B7CFF] to-[#F2A6C1]',
       highlight: 'Sterile Tools'
     },
     {
@@ -40,7 +37,6 @@ export const HowWeWork: React.FC = () => {
       subtitle: 'Flawless Glow & Advice',
       description: 'Enjoy your mirror-shine transformation with customized home maintenance tips and long-lasting confidence.',
       icon: Award,
-      color: 'from-[#F2A6C1] to-[#E57A9E]',
       highlight: 'Flawless Finish'
     }
   ];
@@ -49,10 +45,16 @@ export const HowWeWork: React.FC = () => {
     <section id="how-we-work" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-white text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-14"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Methodology & Process</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -62,7 +64,7 @@ export const HowWeWork: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
             Every session at Hair Spray is executed with precision, from texture diagnosis to the final mirror reveal.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4-Step Process Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -71,26 +73,27 @@ export const HowWeWork: React.FC = () => {
             return (
               <motion.div
                 key={step.stepNumber}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="p-8 rounded-[24px] bg-[#FAFAFA] border border-zinc-200 hover:border-zinc-300 hover:shadow-md flex flex-col justify-between group transition-all shadow-xs"
+                initial={{ opacity: 0, y: 35, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.15 }}
+                whileHover={{ y: -8, transition: { duration: 0.25, ease: 'easeOut' } }}
+                transition={{ duration: 0.45, delay: idx * 0.1 }}
+                className="p-8 rounded-[24px] bg-[#FAFAFA] border border-zinc-200 hover:border-zinc-400 hover:shadow-xl flex flex-col justify-between group transition-all duration-300 shadow-xs cursor-default"
               >
                 <div>
                   {/* Top Row: Step Number & Icon */}
                   <div className="flex items-center justify-between mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-900 group-hover:scale-105 transition-transform shadow-2xs">
+                    <div className="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-900 group-hover:scale-115 group-hover:rotate-6 transition-all duration-300 shadow-2xs">
                       <Icon className="w-5 h-5 text-[#9E6868]" />
                     </div>
 
-                    <span className="font-serif text-3xl font-light text-stone-300 group-hover:text-zinc-950 transition-colors">
+                    <span className="font-serif text-3xl font-light text-stone-300 group-hover:text-zinc-950 group-hover:scale-110 transition-all duration-300">
                       {step.stepNumber}
                     </span>
                   </div>
 
                   {/* Step Title & Subtitle */}
-                  <h3 className="text-xl font-serif font-bold text-zinc-950 mb-1">
+                  <h3 className="text-xl font-serif font-bold text-zinc-950 mb-1 group-hover:text-black transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-xs font-sans text-[#9E6868] mb-4 font-semibold">
@@ -114,16 +117,24 @@ export const HowWeWork: React.FC = () => {
         </div>
 
         {/* Action Banner */}
-        <div className="mt-14 text-center">
-          <button
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="mt-14 text-center"
+        >
+          <motion.button
             id="how-it-works-book-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => openBooking()}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zinc-900 text-white hover:bg-black text-xs font-sans uppercase tracking-wider font-semibold hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-md"
           >
             <CalendarCheck className="w-4 h-4" />
             <span>Begin Your Transformation</span>
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

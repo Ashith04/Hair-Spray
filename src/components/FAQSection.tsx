@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { HelpCircle, ChevronDown, MessageCircleQuestion } from 'lucide-react';
+import { ChevronDown, MessageCircleQuestion } from 'lucide-react';
 import { FAQS_LIST, SALON_INFO } from '../data/salonData';
 
 export const FAQSection: React.FC = () => {
@@ -14,10 +14,16 @@ export const FAQSection: React.FC = () => {
     <section id="faq" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-[#FAFAFA] text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1000px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Inquiries & Clarifications</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 leading-[1.1]">
@@ -27,16 +33,21 @@ export const FAQSection: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-sm font-normal leading-relaxed">
             Direct guidance regarding our texturizing therapies, bridal regimes, hygiene standards, and appointments.
           </p>
-        </div>
+        </motion.div>
 
         {/* Accordion List */}
         <div className="space-y-3">
-          {FAQS_LIST.map((faq) => {
+          {FAQS_LIST.map((faq, idx) => {
             const isOpen = openId === faq.id;
             return (
-              <div
+              <motion.div
                 key={faq.id}
-                className="rounded-[20px] bg-white border border-zinc-200 overflow-hidden shadow-xs transition-all duration-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.35, delay: idx * 0.05 }}
+                whileHover={{ scale: 1.006, transition: { duration: 0.2 } }}
+                className="rounded-[20px] bg-white border border-zinc-200 hover:border-zinc-300 overflow-hidden shadow-xs transition-all duration-200"
               >
                 <button
                   id={`faq-btn-${faq.id}`}
@@ -77,7 +88,7 @@ export const FAQSection: React.FC = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>

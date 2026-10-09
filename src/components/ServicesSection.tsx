@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Clock, ArrowRight, Scissors, ChevronDown, ChevronUp, Layers, UserCheck } from 'lucide-react';
+import { Search, Clock, ArrowUpRight, Scissors, ChevronDown, ChevronUp, Layers, User } from 'lucide-react';
 import { SERVICES_LIST } from '../data/salonData';
 import { ServiceCategory, ServiceItem } from '../types';
 import { useBooking } from '../context/BookingContext';
@@ -104,10 +104,16 @@ export const ServicesSection: React.FC = () => {
     <section id="services" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-[#FAFAFA] text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-zinc-200 mb-12"
+        >
           <div>
             <div className="font-sans text-xs uppercase tracking-widest text-[#9E6868] mb-3 flex items-center gap-2 font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#9E6868]" />
+              <span className="w-2 h-2 rounded-full bg-[#9E6868] animate-pulse" />
               <span>Signature Treatment Menu</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
@@ -117,10 +123,16 @@ export const ServicesSection: React.FC = () => {
           <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed">
             From world-class Keratin Cysteine smoothing to clinical skin therapies and grand bridal artistry — explore our transparent, fixed-price unisex catalog.
           </p>
-        </div>
+        </motion.div>
 
         {/* Gender / Audience Segment Selector */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 p-3 rounded-2xl bg-white border border-zinc-200 shadow-2xs">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 p-3 rounded-2xl bg-white border border-zinc-200 shadow-2xs"
+        >
           <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
             <span className="text-xs font-sans uppercase tracking-wider text-zinc-400 font-semibold px-2 hidden sm:inline-block">
               Filter by:
@@ -150,14 +162,14 @@ export const ServicesSection: React.FC = () => {
               onClick={() => handleAudienceSelect('women')}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer ${
                 audience === 'women'
-                  ? 'bg-rose-900 text-white shadow-xs'
-                  : 'text-zinc-600 hover:text-rose-900 hover:bg-rose-50'
+                  ? 'bg-zinc-900 text-white shadow-xs'
+                  : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100'
               }`}
             >
-              <span className="w-2 h-2 rounded-full bg-rose-400" />
+              <User className="w-3.5 h-3.5" />
               <span>Women & Girls</span>
               <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                audience === 'women' ? 'bg-white/20 text-white' : 'bg-rose-100 text-rose-800'
+                audience === 'women' ? 'bg-white/20 text-white' : 'bg-zinc-100 text-zinc-600'
               }`}>
                 {womenCount}
               </span>
@@ -173,22 +185,25 @@ export const ServicesSection: React.FC = () => {
                   : 'text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100'
               }`}
             >
-              <Scissors className="w-3.5 h-3.5 text-sky-400" />
+              <Scissors className="w-3.5 h-3.5" />
               <span>Men & Boys</span>
               <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                audience === 'men' ? 'bg-white/20 text-white' : 'bg-sky-100 text-sky-900'
+                audience === 'men' ? 'bg-white/20 text-white' : 'bg-zinc-100 text-zinc-600'
               }`}>
                 {menCount}
               </span>
             </button>
           </div>
 
-          <div className="text-[11px] font-sans text-zinc-500 font-medium px-2">
-            {audience === 'women' && '🌸 Showing all services available for Women & Girls'}
-            {audience === 'men' && '✂️ Showing all services available for Men & Boys'}
-            {audience === 'all' && '✨ Complete Unisex Salon Catalog (89 Services)'}
+          <div className="flex items-center gap-2 text-xs font-sans text-zinc-500 font-medium px-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
+            <span>
+              {audience === 'women' && 'Showing all treatments tailored for Women & Girls'}
+              {audience === 'men' && 'Showing all treatments tailored for Men & Boys'}
+              {audience === 'all' && 'Complete Unisex Salon Catalog (89 Services)'}
+            </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Filter Controls & Search Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 pb-6 border-b border-zinc-200">
@@ -242,11 +257,12 @@ export const ServicesSection: React.FC = () => {
               <motion.div
                 key={service.id}
                 layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 25, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
                 transition={{ duration: 0.35, delay: (idx % BATCH_SIZE) * 0.04 }}
-                className="rounded-[24px] overflow-hidden bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md flex flex-col group transition-all duration-300 relative shadow-xs"
+                className="rounded-[24px] overflow-hidden bg-white border border-zinc-200 hover:border-zinc-400 hover:shadow-xl flex flex-col group transition-all duration-300 relative shadow-xs"
               >
                 {/* Popular / Featured Badge */}
                 {service.popular && (
@@ -263,7 +279,7 @@ export const ServicesSection: React.FC = () => {
                     onError={(e) => {
                       e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&auto=format&fit=crop&q=80';
                     }}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-[1.02]"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out filter contrast-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
@@ -345,14 +361,16 @@ export const ServicesSection: React.FC = () => {
                       </div>
                     </div>
 
-                    <button
+                    <motion.button
                       id={`book-service-${service.id}`}
+                      whileHover={{ scale: 1.06 }}
+                      whileTap={{ scale: 0.94 }}
                       onClick={() => openBooking(service)}
-                      className="px-4 py-2 rounded-full bg-zinc-900 hover:bg-black text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer shrink-0 shadow-xs"
+                      className="px-4 py-2 rounded-full bg-zinc-900 hover:bg-black text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shrink-0 shadow-xs group/btn"
                     >
                       <span>Book</span>
-                      <span className="text-[11px] text-zinc-300">↗</span>
-                    </button>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>

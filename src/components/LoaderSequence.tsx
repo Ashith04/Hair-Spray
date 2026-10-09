@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
 import { SalonLogo } from './SalonLogo';
 
 interface LoaderSequenceProps {
@@ -167,9 +168,10 @@ export const LoaderSequence: React.FC<LoaderSequenceProps> = ({ onComplete }) =>
               e.stopPropagation();
               onComplete();
             }}
-            className="absolute bottom-10 font-sans text-xs uppercase tracking-wider text-zinc-600 hover:text-zinc-950 px-6 py-2.5 rounded-full border border-zinc-200 hover:border-zinc-400 bg-white shadow-xs cursor-pointer transition-all font-semibold"
+            className="absolute bottom-10 font-sans text-xs uppercase tracking-wider text-zinc-600 hover:text-zinc-950 px-6 py-2.5 rounded-full border border-zinc-200 hover:border-zinc-400 bg-white shadow-xs cursor-pointer transition-all font-semibold flex items-center gap-1.5"
           >
-            Skip Intro →
+            <span>Skip Intro</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </motion.div>
       )}
