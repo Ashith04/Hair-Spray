@@ -35,7 +35,15 @@ export const LoaderSequence: React.FC<LoaderSequenceProps> = ({ onComplete }) =>
       onComplete();
     }, 3400);
 
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
+        onComplete();
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+
     return () => {
+      window.removeEventListener('keydown', handleKey);
       clearInterval(progressTimer);
       clearTimeout(dissolveTimer);
       clearTimeout(completeTimer);

@@ -1,11 +1,60 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { Play, Pause, Volume2, VolumeX, Check, ArrowUpRight, Shield, Award, Star, Users } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Play, Pause, ChevronLeft, ChevronRight, Check, ArrowUpRight, Camera, Sparkles } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
 
 export const About: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const studioSlides = [
+    {
+      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&auto=format&fit=crop&q=80',
+      title: 'Main Unisex Styling Floor',
+      zone: 'Zone 01 · Kavoor',
+      desc: 'Ergonomic luxury styling chairs, backlit vanity mirrors & climate-controlled comfort.'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80',
+      title: 'Keratin Cysteine & Bond Repair Suite',
+      zone: 'Zone 02 · Hair Lab',
+      desc: 'Scientific hair restoration, ozone mist steaming & mirror-shine blowout therapy.'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&auto=format&fit=crop&q=80',
+      title: 'Private Facial & Skincare Sanctuary',
+      zone: 'Zone 03 · Wellness Bay',
+      desc: 'Calming aromatherapy, O+3 brightening, and deep pore purification therapies.'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1200&auto=format&fit=crop&q=80',
+      title: 'Men’s Grooming & Shaving Station',
+      zone: 'Zone 04 · Men’s Bay',
+      desc: 'Hot towel compresses, sterile single-use blades, and razor beard contouring.'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1200&auto=format&fit=crop&q=80',
+      title: 'South Indian Bridal Make-Up Suite',
+      zone: 'Zone 05 · Bridal Suite',
+      desc: 'Private bridal dressing room, traditional jasmine floral artistry & HD makeup.'
+    }
+  ];
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % studioSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, studioSlides.length]);
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % studioSlides.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + studioSlides.length) % studioSlides.length);
+  };
 
   const stats = [
     {
@@ -36,6 +85,8 @@ export const About: React.FC = () => {
     'Customized Scalp, Hair Texture, and Skin Consultation Before Every Service',
     '100% Hospital-Grade Sanitized & Autoclaved Tools for Each Guest'
   ];
+
+  const active = studioSlides[currentSlide];
 
   return (
     <section id="about" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-white text-zinc-900 relative z-10 border-b border-zinc-200">
@@ -90,71 +141,91 @@ export const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Video Showcase Player */}
+          {/* Right Column: Interactive Virtual Studio Tour Showcase */}
           <div className="lg:col-span-6 rounded-[28px] bg-[#FAFAFA] border border-zinc-200 p-4 sm:p-5 flex flex-col justify-between">
-            <div className="relative rounded-2xl overflow-hidden aspect-video bg-black/90 group">
-              <video
-                id="salon-experience-video"
-                className="w-full h-full object-cover"
-                poster="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&auto=format&fit=crop&q=80"
-                playsInline
-                loop
-                muted={isMuted}
-                src="https://assets.mixkit.co/videos/preview/mixkit-hairdresser-brushing-a-womans-hair-41270-large.mp4"
-                ref={(el) => {
-                  if (el) {
-                    if (isPlaying) {
-                      el.play().catch(() => {});
-                    } else {
-                      el.pause();
-                    }
-                  }
-                }}
-              />
+            <div className="relative rounded-2xl overflow-hidden aspect-video bg-zinc-950 group">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={active.image}
+                  src={active.image}
+                  alt={active.title}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&auto=format&fit=crop&q=80';
+                  }}
+                  className="w-full h-full object-cover"
+                />
+              </AnimatePresence>
 
-              {/* Ambient overlay */}
-              <div className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${isPlaying ? 'opacity-10 hover:opacity-30' : 'opacity-50'}`} />
+              {/* Ambient gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30 pointer-events-none" />
 
-              {/* Central Play/Pause Button */}
-              <button
-                id="video-play-toggle-btn"
-                onClick={() => setIsPlaying(!isPlaying)}
-                aria-label={isPlaying ? 'Pause Salon Video' : 'Play Salon Video'}
-                className="absolute inset-0 m-auto w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 hover:bg-white/30 border border-white/50 backdrop-blur-md flex items-center justify-center text-white shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-              >
-                {isPlaying ? (
-                  <Pause className="w-6 h-6 fill-white" />
-                ) : (
-                  <Play className="w-6 h-6 fill-white ml-1 text-white" />
-                )}
-              </button>
-
-              {/* Bottom Video Controls Strip */}
-              <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-black/75 backdrop-blur-md border border-white/15 flex items-center justify-between text-white text-xs">
-                <div className="flex items-center gap-2">
+              {/* Top Station Tag & Auto-play indicator */}
+              <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between text-xs z-10">
+                <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white font-sans text-[11px] font-semibold flex items-center gap-1.5 shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-sans text-xs text-white/90 font-medium">
-                    Inside Hair Spray Studio · 4K Tour
-                  </span>
-                </div>
+                  <span>{active.zone}</span>
+                </span>
 
                 <button
-                  id="video-mute-toggle-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsMuted(!isMuted);
-                  }}
-                  aria-label="Toggle Audio"
-                  className="p-1.5 rounded-lg hover:bg-white/15 transition-colors cursor-pointer"
+                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                  className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white font-sans text-[11px] font-medium flex items-center gap-1 hover:bg-black/80 transition-colors cursor-pointer"
+                  title={isAutoPlaying ? 'Pause Auto-Tour' : 'Resume Auto-Tour'}
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3 fill-white" />}
+                  <span>{isAutoPlaying ? 'Auto Tour' : 'Paused'}</span>
                 </button>
+              </div>
+
+              {/* Previous / Next Chevron Navigation */}
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Studio Zone"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer opacity-80 hover:opacity-100 z-10"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next Studio Zone"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all cursor-pointer opacity-80 hover:opacity-100 z-10"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+
+              {/* Bottom Information Overlay */}
+              <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-black/75 backdrop-blur-md border border-white/15 text-white z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                  <h4 className="font-serif text-sm sm:text-base font-bold text-white mb-0.5">
+                    {active.title}
+                  </h4>
+                  <p className="font-sans text-[11px] text-white/80 line-clamp-1">
+                    {active.desc}
+                  </p>
+                </div>
+
+                {/* Step indicator dots */}
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {studioSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                        currentSlide === idx ? 'w-5 bg-white' : 'w-1.5 bg-white/40 hover:bg-white/70'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className="mt-4 px-2 flex items-center justify-between text-xs text-zinc-600 font-sans font-medium">
-              <span>Air Conditioned Private Suites</span>
-              <span className="text-[#9E6868] font-bold">Kavoor Junction</span>
+              <span>Interactive 5-Zone Studio Experience</span>
+              <span className="text-[#9E6868] font-bold">Kavoor Junction, Mangalore</span>
             </div>
           </div>
         </div>

@@ -12,7 +12,9 @@ import {
   ArrowRight,
   Share2,
   MessageSquare,
-  FileText
+  FileText,
+  Copy,
+  Check
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useBooking } from '../context/BookingContext';
@@ -41,6 +43,8 @@ export const BookingModal: React.FC = () => {
   const [promoCode, setPromoCode] = useState('');
   const [promoApplied, setPromoApplied] = useState(false);
   const [promoError, setPromoError] = useState('');
+  const [formError, setFormError] = useState('');
+  const [copied, setCopied] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmedBookingId, setConfirmedBookingId] = useState('');
   const [whatsAppUrl, setWhatsAppUrl] = useState('');
@@ -102,9 +106,39 @@ export const BookingModal: React.FC = () => {
 _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
   };
 
+  const handleCopyDetails = () => {
+    const message = generateWhatsAppMessage(confirmedBookingId);
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(message);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
+
+  const getGoogleCalendarUrl = () => {
+    const title = `Hair Spray Salon: ${selectedService?.name || 'Hair Treatment'}`;
+    const details = `Booking Ref: #${confirmedBookingId}\nTreatment: ${selectedService?.name}\nSpecialist: ${selectedStylist ? selectedStylist.name : 'Salon Expert'}\nAmount: ₹${finalPrice}\nSalon: ${SALON_INFO.phone}`;
+    const location = SALON_INFO.address;
+    const cleanDate = selectedDate.replace(/-/g, '');
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}&dates=${cleanDate}T090000Z/${cleanDate}T103000Z`;
+  };
+
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedService || !customerName.trim() || !customerPhone.trim()) return;
+    if (!selectedService) {
+      setFormError('Please select a salon treatment.');
+      return;
+    }
+    if (!customerName.trim()) {
+      setFormError('Please enter your full name.');
+      return;
+    }
+    const cleanPhone = customerPhone.replace(/\D/g, '');
+    if (!cleanPhone || cleanPhone.length < 8) {
+      setFormError('Please enter a valid phone or WhatsApp number (min 8 digits).');
+      return;
+    }
+    setFormError('');
 
     const bId = `HS-${Math.floor(100000 + Math.random() * 900000)}`;
     setConfirmedBookingId(bId);
@@ -154,6 +188,8 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
     setIsConfirmed(false);
     setPromoApplied(false);
     setPromoCode('');
+    setFormError('');
+    setCopied(false);
     setCustomerNotes('');
     closeBooking();
   };
@@ -267,12 +303,34 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
                 <span>Open WhatsApp Chat</span>
               </a>
 
+              <button
+                type="button"
+                onClick={handleCopyDetails}
+                className="flex-1 py-3.5 rounded-full border border-zinc-300 bg-white hover:bg-zinc-100 text-zinc-900 font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-zinc-500" />}
+                <span>{copied ? 'Copied to Clipboard! ✓' : 'Copy Details'}</span>
+              </button>
+            </div>
+
+            {/* Secondary Utilities: Calendar & Direct Call */}
+            <div className="flex flex-col sm:flex-row gap-2.5 w-full font-sans text-xs mt-3">
+              <a
+                href={getGoogleCalendarUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-700 font-medium flex items-center justify-center gap-2 transition-colors"
+              >
+                <Calendar className="w-3.5 h-3.5 text-zinc-500" />
+                <span>Add to Google Calendar</span>
+              </a>
+
               <a
                 href={`tel:${SALON_INFO.phoneClean}`}
-                className="flex-1 py-3.5 rounded-full border border-zinc-300 bg-white hover:bg-zinc-100 text-zinc-900 font-semibold flex items-center justify-center gap-2 transition-colors"
+                className="flex-1 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-zinc-100 text-zinc-700 font-medium flex items-center justify-center gap-2 transition-colors"
               >
-                <Phone className="w-4 h-4 text-emerald-700" />
-                <span>Call Salon: {SALON_INFO.phone}</span>
+                <Phone className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Call: {SALON_INFO.phone}</span>
               </a>
             </div>
 
@@ -544,6 +602,11 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
                 <p className="text-[11px] font-sans text-rose-600 font-semibold">
                   {promoError}
                 </p>
+              )}
+              {formError && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center gap-2">
+                  <span>⚠️ {formError}</span>
+                </div>
               )}
             </div>
 

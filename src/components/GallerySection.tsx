@@ -31,6 +31,17 @@ export const GallerySection: React.FC = () => {
     );
   };
 
+  React.useEffect(() => {
+    if (selectedImageIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedImageIndex(null);
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [selectedImageIndex, filteredGallery.length]);
+
   return (
     <section id="gallery" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-10 bg-white text-zinc-900 relative z-10 border-b border-zinc-200">
       <div className="max-w-[1400px] mx-auto">
