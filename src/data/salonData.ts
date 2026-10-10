@@ -12,7 +12,11 @@ import hair4 from '../assets/images/hair4.png';
 import hair5 from '../assets/images/hair5.png';
 import hair6 from '../assets/images/hair6.png';
 
-export { hair1, hair2, hair3, hair4, hair5, hair6 };
+import hair7 from '../assets/images/hair7.png';
+import hair8 from '../assets/images/hair8.png';
+import hair9 from '../assets/images/hair9.png';
+
+export { hair1, hair2, hair3, hair4, hair5, hair6, hair7, hair8, hair9 };
 
 export const SALON_INFO = {
   name: 'Hair Spray Unisex Salon',
@@ -496,103 +500,70 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'gal-1',
-    title: 'Keratin & Gloss Wavy Hair Architecture',
-    category: 'Hair',
+    title: 'Salon Panorama & Kids Styling Car',
+    category: 'Salon Interior',
     imageUrl: hair1,
     beforeImageUrl: hair1,
-    description: 'Restorative Keratin & Cysteine conditioning transforming dull, unruly hair into silky, mirror-shine waves with 100% frizz immunity.',
-    duration: '90 - 120 mins',
-    stylist: 'Senior Hair Specialist',
-    highlight: 'Zero Frizz Guaranteed',
-    tags: ['Keratin Cysteine', 'Zero Frizz', 'Humidity Shield', 'Mirror Shine']
+    description: 'Spacious panoramic interior of Hair Spray salon featuring grooming bays, fish spa tank, and our playful red sports car styling chair for kids haircuts.',
+    duration: 'Full Salon Facility',
+    stylist: 'Kavoor Main Floor',
+    highlight: 'Kids Car Chair & Fish Spa',
+    tags: ['Salon Panorama', 'Kids Haircuts', 'Fish Spa Tank', 'Central AC']
   },
   {
     id: 'gal-2',
-    title: 'Deep Scalp Detox & Therapeutic Basin Wash',
-    category: 'Hair',
+    title: 'Executive Styling Bay & Vanity Mirrors',
+    category: 'Styling Stations',
     imageUrl: hair2,
-    description: 'Invigorating hair cleanse with therapeutic acupressure wash, organic protein lather, and micro-mist basin rinse.',
-    duration: '45 mins',
-    stylist: 'Scalp & Hair Therapist',
-    highlight: 'Detox & Tension Relief',
-    tags: ['Scalp Detox', 'Basin Wash', 'Follicle Boost', 'Pure Relaxation']
+    description: 'Modern hair styling stations equipped with backlit circular LED vanity mirrors, ergonomic hydraulic reclining chairs, and professional styling carts.',
+    duration: 'Men & Women Styling',
+    stylist: 'Styling Bay',
+    highlight: 'LED Halo Vanity Mirrors',
+    tags: ['Hydraulic Chairs', 'Halo Mirrors', 'Precision Cut', 'VIP Ambience']
   },
   {
     id: 'gal-3',
-    title: 'Luxury Air-Conditioned Styling Bays',
-    category: 'Salon Interior',
+    title: 'Product Display & Hair Wash Station',
+    category: 'Styling Stations',
     imageUrl: hair3,
-    description: 'Centrally air-conditioned styling stations with hydraulic leather chairs, sanitized instruments, and wide vanity mirrors.',
-    duration: 'Walk-in / Booking',
-    stylist: 'Kavoor Studio',
-    highlight: 'Central AC & VIP Comfort',
-    tags: ['Central AC', 'Hydraulic Chairs', 'Hygienic Tools', 'Modern Ambience']
+    description: 'Organized salon partition showcasing professional hair colors and treatments, leading to the air-conditioned deep-cleansing hair wash basin.',
+    duration: 'Wash & Color Area',
+    stylist: 'Hair Wash Station',
+    highlight: 'Professional Care Products',
+    tags: ['Shampoo Basin', 'Color Showcase', 'Matrix & Loreal', 'Hygienic Care']
   },
   {
     id: 'gal-4',
-    title: 'Precision Blowout & Volume Heat Styling',
-    category: 'Hair',
+    title: 'Lounge Entrance & Glass Showcase',
+    category: 'Salon Interior',
     imageUrl: hair4,
-    description: 'Artisanal round-brush thermal blowout infusing bounce, root lift, and weightless movement with thermal protection.',
-    duration: '40 mins',
-    stylist: 'Creative Stylist',
-    highlight: 'Weightless Bounce',
-    tags: ['Thermal Blowout', 'Root Lift', 'Silk Finish', 'Heat Shield']
+    description: 'Welcoming salon entry featuring wooden partition with glass shelves displaying genuine styling waxes, serums, and central tiled corridor.',
+    duration: 'Reception Walkway',
+    stylist: 'Salon Entryway',
+    highlight: 'Premium Product Showcase',
+    tags: ['Lounge Entrance', 'Product Display', 'Central Walkway', 'Modern Decor']
   },
   {
     id: 'gal-5',
-    title: 'Vitamin C Brightening & Deep Facial Therapy',
-    category: 'Facials & Nails',
+    title: 'Luxury Full-Body Reclining Massage Chair',
+    category: 'Spa & Massage',
     imageUrl: hair5,
-    description: 'Custom botanical facial therapy, gentle enzyme peel, lymphatic drainage massage, and cold hydration mask for glowing skin.',
-    duration: '60 mins',
-    stylist: 'Skin Care Specialist',
-    highlight: 'Instant Radiant Glow',
-    tags: ['Vitamin C Peel', 'Deep Hydration', 'Pore Tightening', 'Dewy Glow']
+    description: 'Zero-gravity electronic massage recliner with automated multi-point body therapy and handheld remote control overlooking Kavoor junction.',
+    duration: '15 - 30 min Sessions',
+    stylist: 'Wellness Lounge',
+    highlight: 'Zero-Gravity Massage',
+    tags: ['Full Body Massage', 'Acupressure Relief', 'Luxury Recliner', 'Relaxation']
   },
   {
     id: 'gal-6',
-    title: 'Contemporary Bridal Makeover & HD Finish',
-    category: 'Bridal',
+    title: 'Hair Spray Reception & Front Desk',
+    category: 'Reception',
     imageUrl: hair6,
-    description: 'Bespoke high-definition bridal transformation featuring 4K waterproof makeup, traditional floral hair architecture, and jewelry setting.',
-    duration: '180 mins',
-    stylist: 'Master Bridal Artist',
-    highlight: '4K Waterproof HD',
-    tags: ['4K HD Makeup', 'Bridal Hair Architecture', 'Sweatproof', 'Saree Draping']
-  },
-  {
-    id: 'gal-7',
-    title: 'Royal Reception Glam & Sculpted Updo',
-    category: 'Bridal',
-    imageUrl: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1000&auto=format&fit=crop&q=80',
-    description: 'Luminous airbrushed reception makeup with warm copper tones, sculpted bridal updo, and bespoke jewelry pinning.',
-    duration: '150 mins',
-    stylist: 'Bridal Specialist',
-    highlight: 'Airbrush Glamour',
-    tags: ['Airbrush Makeup', 'Reception Style', 'Sculpted Updo', 'Long-Wear']
-  },
-  {
-    id: 'gal-8',
-    title: 'Hydrotherapy Pedicure & Gel Nail Art',
-    category: 'Facials & Nails',
-    imageUrl: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1000&auto=format&fit=crop&q=80',
-    description: 'Warm herbal bubble foot soak, marine clay detox wrap, callus smoothing, and precision gel gloss polish finish.',
-    duration: '55 mins',
-    stylist: 'Nail & Spa Technician',
-    highlight: 'Herbal Jacuzzi Bath',
-    tags: ['Herbal Foot Soak', 'Marine Mud Wrap', 'Callus Treatment', 'Gloss Gel Polish']
-  },
-  {
-    id: 'gal-9',
-    title: 'Private VIP Aesthetic Consultation Lounge',
-    category: 'Salon Interior',
-    imageUrl: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&auto=format&fit=crop&q=80',
-    description: 'Quiet, dedicated private consultation and skin therapy zone designed for personal privacy, skin analysis, and bridal trials.',
-    duration: 'Complimentary Session',
-    stylist: 'Consultation Suite',
-    highlight: 'Private & Sterile',
-    tags: ['Private Lounge', 'Skin Analysis', 'Bridal Trial Suite', 'Sterile Care']
+    description: 'Warm welcome desk featuring the official 3D embossed "Hair Spray For You" counter, digital instant payments, and client consultation.',
+    duration: 'Customer Support',
+    stylist: 'Front Office Team',
+    highlight: 'Official Reception Desk',
+    tags: ['Hair Spray For You', 'Reception Desk', 'Instant Billing', 'Friendly Staff']
   }
 ];
 

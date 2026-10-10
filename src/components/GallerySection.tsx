@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Eye, X, ChevronLeft, ChevronRight, ArrowLeftRight, Clock, Sparkles } from 'lucide-react';
-import { GALLERY_ITEMS, hair1 } from '../data/salonData';
+import { Eye, X, ChevronLeft, ChevronRight, ArrowLeftRight, ArrowUpRight } from 'lucide-react';
+import { GALLERY_ITEMS } from '../data/salonData';
 import { GalleryItem } from '../types';
 
 export const GallerySection: React.FC = () => {
@@ -11,7 +11,7 @@ export const GallerySection: React.FC = () => {
   // Interactive Before/After Slider position (0 - 100)
   const [sliderPosition, setSliderPosition] = useState(50);
 
-  const categories = ['All', 'Hair', 'Bridal', 'Salon Interior', 'Facials & Nails'];
+  const categories = ['All', 'Salon Interior', 'Styling Stations', 'Spa & Massage', 'Reception'];
 
   const filteredGallery = GALLERY_ITEMS.filter((item) =>
     activeCategory === 'All' ? true : item.category === activeCategory
@@ -59,12 +59,12 @@ export const GallerySection: React.FC = () => {
               <span>Visual Archive</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-950 max-w-2xl leading-[1.1]">
-              Hair & Aesthetic Archive
+              Salon & Ambience Archive
             </h2>
           </div>
           <div className="flex flex-col items-start md:items-end gap-4">
             <p className="text-sm text-zinc-600 max-w-md font-normal leading-relaxed md:text-right">
-              Authentic client makeovers, bridal creations, and interiors from our central Kavoor salon.
+              Explore our modern styling bays, luxury massage loungers, kids haircut station, and reception at our Kavoor salon.
             </p>
             {/* Category Filter Chips */}
             <div className="flex items-center gap-2 overflow-x-auto pb-1 max-w-full font-sans no-scrollbar">
@@ -130,7 +130,7 @@ export const GallerySection: React.FC = () => {
             >
               {/* After Image (Full width background) */}
               <img
-                src={hair1}
+                src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&auto=format&fit=crop&q=80"
                 alt="After Treatment - Silky Smooth Mirror Shine"
                 className="absolute inset-0 w-full h-full object-cover filter brightness-95"
               />
@@ -190,72 +190,66 @@ export const GallerySection: React.FC = () => {
               />
 
               {/* Default subtle title bar (visible when NOT hovered) */}
-              <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-0 flex flex-col justify-end pointer-events-none">
-                <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider mb-1">
+              <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300 group-hover:opacity-0 flex flex-col justify-end pointer-events-none">
+                <span className="text-[10px] font-medium text-zinc-300 uppercase tracking-wider mb-1">
                   {item.category}
                 </span>
-                <h4 className="text-sm font-serif font-bold text-white line-clamp-1">
+                <h4 className="text-sm font-serif font-semibold text-white line-clamp-1">
                   {item.title}
                 </h4>
               </div>
 
-              {/* Full Detailed Info Overlay (Revealed on HOVER) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-black/85 to-black/60 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-5 sm:p-6 text-white font-sans">
-                {/* Header: Category Badge + Duration Pill */}
-                <div className="flex items-center justify-between gap-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#9E6868] text-white shadow-xs">
+              {/* Full Detailed Info Overlay (Revealed on HOVER - Soft Dev Style) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/75 to-black/30 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-5 sm:p-6 text-white font-sans">
+                {/* Header: Clean Category Pill + Area Badge */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-medium tracking-wide bg-white/10 backdrop-blur-md border border-white/15 text-zinc-200">
                     {item.category}
                   </span>
                   {item.duration && (
-                    <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-medium bg-white/15 text-zinc-200 backdrop-blur-md border border-white/10">
-                      <Clock className="w-3 h-3 text-amber-300" />
-                      <span>{item.duration}</span>
+                    <span className="text-[11px] text-zinc-400 font-medium">
+                      {item.duration}
                     </span>
                   )}
                 </div>
 
-                {/* Body: Highlights, Title, Image Description Info, and Tags */}
-                <div className="my-auto py-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                {/* Body: Clean Title & Direct Photo Info */}
+                <div className="my-auto py-2">
                   {item.highlight && (
-                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-amber-300 mb-1.5">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>{item.highlight}</span>
+                    <div className="text-[11px] font-medium text-[#D1A8A8] tracking-wide mb-1.5">
+                      {item.highlight}
                     </div>
                   )}
-                  <h4 className="text-base sm:text-lg font-serif font-bold leading-snug text-white mb-2 group-hover:text-amber-100 transition-colors">
+                  <h4 className="text-base sm:text-lg font-serif font-semibold leading-snug text-white mb-2">
                     {item.title}
                   </h4>
                   <p className="text-xs text-zinc-300 leading-relaxed font-sans line-clamp-3 mb-3 font-normal">
                     {item.description}
                   </p>
 
-                  {/* Feature Tags */}
+                  {/* Clean Feature Pills (No tacky hashtags, soft dev borders) */}
                   {item.tags && item.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5">
                       {item.tags.slice(0, 3).map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white/10 text-zinc-200 border border-white/10"
+                          className="text-[11px] font-normal px-2.5 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10"
                         >
-                          #{tag}
+                          {tag}
                         </span>
                       ))}
                     </div>
                   )}
                 </div>
 
-                {/* Footer: Stylist info + Inspect action */}
-                <div className="pt-2 border-t border-white/15 flex items-center justify-between text-xs transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  {item.stylist ? (
-                    <span className="text-[11px] text-zinc-400 font-medium truncate max-w-[150px]">
-                      By <span className="text-zinc-200">{item.stylist}</span>
-                    </span>
-                  ) : (
-                    <span className="text-[11px] text-zinc-400 font-medium">Hair Spray Kavoor</span>
-                  )}
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-300 group-hover:text-amber-200 transition-colors">
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>Inspect</span>
+                {/* Footer: Soft Stylist Attribution + Clean View Action */}
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                  <span className="text-[11px] text-zinc-400">
+                    {item.stylist || 'Kavoor Salon'}
+                  </span>
+                  <div className="flex items-center gap-1.5 text-xs text-zinc-300 group-hover:text-white transition-colors font-medium">
+                    <span>View photo</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white transition-colors" />
                   </div>
                 </div>
               </div>
@@ -313,23 +307,21 @@ export const GallerySection: React.FC = () => {
                 <div className="px-2 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-sans">
                   <div className="max-w-2xl">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <span className="text-[10px] uppercase tracking-wider text-[#9E6868] font-bold px-2 py-0.5 bg-[#9E6868]/10 rounded-full border border-[#9E6868]/20">
+                      <span className="text-[11px] font-medium tracking-wide text-zinc-700 px-3 py-0.5 bg-zinc-100 rounded-full border border-zinc-200">
                         {filteredGallery[selectedImageIndex].category}
                       </span>
                       {filteredGallery[selectedImageIndex].duration && (
-                        <span className="flex items-center gap-1 text-[11px] text-zinc-600 font-medium">
-                          <Clock className="w-3 h-3 text-[#9E6868]" />
-                          <span>{filteredGallery[selectedImageIndex].duration}</span>
+                        <span className="text-[11px] text-zinc-500 font-medium">
+                          {filteredGallery[selectedImageIndex].duration}
                         </span>
                       )}
                       {filteredGallery[selectedImageIndex].highlight && (
-                        <span className="flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/70">
-                          <Sparkles className="w-3 h-3 text-amber-600" />
-                          <span>{filteredGallery[selectedImageIndex].highlight}</span>
+                        <span className="text-[11px] font-medium text-zinc-600 bg-zinc-50 px-2.5 py-0.5 rounded-full border border-zinc-200">
+                          {filteredGallery[selectedImageIndex].highlight}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-serif font-bold text-zinc-950 mb-1">
+                    <h3 className="text-lg sm:text-xl font-serif font-semibold text-zinc-950 mb-1">
                       {filteredGallery[selectedImageIndex].title}
                     </h3>
                     <p className="text-xs sm:text-sm text-zinc-600 font-sans font-normal leading-relaxed mb-2.5">
@@ -340,9 +332,9 @@ export const GallerySection: React.FC = () => {
                         {filteredGallery[selectedImageIndex].tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-600 border border-zinc-200"
+                            className="text-[11px] font-normal px-2.5 py-0.5 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200"
                           >
-                            #{tag}
+                            {tag}
                           </span>
                         ))}
                       </div>
@@ -351,7 +343,7 @@ export const GallerySection: React.FC = () => {
                   <div className="flex sm:flex-col items-center sm:items-end justify-between gap-1 text-right border-t sm:border-t-0 pt-2 sm:pt-0 border-zinc-100">
                     {filteredGallery[selectedImageIndex].stylist && (
                       <div className="text-xs text-zinc-500">
-                        Expert: <span className="font-semibold text-zinc-900">{filteredGallery[selectedImageIndex].stylist}</span>
+                        {filteredGallery[selectedImageIndex].stylist}
                       </div>
                     )}
                     <span className="text-xs text-zinc-400 font-medium">

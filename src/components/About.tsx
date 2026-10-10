@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, Pause, ChevronLeft, ChevronRight, Check, ArrowUpRight, Camera, Star } from 'lucide-react';
-import { SALON_INFO } from '../data/salonData';
+import { SALON_INFO, hair7, hair8, hair9, hair1, hair5 } from '../data/salonData';
 
 export const About: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,34 +9,34 @@ export const About: React.FC = () => {
 
   const studioSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&auto=format&fit=crop&q=80',
-      title: 'Main Unisex Styling Floor',
-      zone: 'Zone 01 · Kavoor',
-      desc: 'Ergonomic luxury styling chairs, backlit vanity mirrors & climate-controlled comfort.'
+      image: hair7,
+      title: 'Keratin & Cysteine Hair Transformation',
+      zone: 'Zone 01 · Hair Transformation',
+      desc: 'Real client before & after: Transforming frizzy hair into silky, mirror-shine layered waves.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80',
-      title: 'Keratin Cysteine & Bond Repair Suite',
-      zone: 'Zone 02 · Hair Lab',
-      desc: 'Scientific hair restoration, ozone mist steaming & mirror-shine blowout therapy.'
+      image: hair8,
+      title: 'Kids & Juniors Precision Haircuts',
+      zone: 'Zone 02 · Kids & Juniors',
+      desc: 'Fun styling experience and trendy modern fades for young champions at our salon wall.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&auto=format&fit=crop&q=80',
-      title: 'Private Facial & Skincare Sanctuary',
-      zone: 'Zone 03 · Wellness Bay',
-      desc: 'Calming aromatherapy, O+3 brightening, and deep pore purification therapies.'
+      image: hair9,
+      title: 'Men’s Modern Fade & Beard Grooming',
+      zone: 'Zone 03 · Men’s Bay',
+      desc: 'Sharp flat-top fade cuts, textured styling, and precision grooming tailored to your look.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1200&auto=format&fit=crop&q=80',
-      title: 'Men’s Grooming & Shaving Station',
-      zone: 'Zone 04 · Men’s Bay',
-      desc: 'Hot towel compresses, sterile single-use blades, and razor beard contouring.'
+      image: hair1,
+      title: 'Central Salon Studio & Kids Car Chair',
+      zone: 'Zone 04 · Studio Interior',
+      desc: 'Panoramic air-conditioned styling bays, fish spa tank, and custom red sports car kids chair.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1200&auto=format&fit=crop&q=80',
-      title: 'South Indian Bridal Make-Up Suite',
-      zone: 'Zone 05 · Bridal Suite',
-      desc: 'Private bridal dressing room, traditional jasmine floral artistry & HD makeup.'
+      image: hair5,
+      title: 'Zero-Gravity Full Body Massage Lounge',
+      zone: 'Zone 05 · Wellness Spa',
+      desc: 'Electronic multi-point acupressure massage chair for full-body stress relief and relaxation.'
     }
   ];
 
@@ -173,7 +173,7 @@ export const About: React.FC = () => {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.6 }}
                   onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&auto=format&fit=crop&q=80';
+                    e.currentTarget.src = hair1;
                   }}
                   className="w-full h-full object-cover"
                 />

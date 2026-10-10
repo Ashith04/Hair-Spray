@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, MapPin, Calendar, Star, Phone, Instagram, MessageCircle, Scissors } from 'lucide-react';
 import { useBooking } from '../context/BookingContext';
-import { SALON_INFO } from '../data/salonData';
+import { SALON_INFO, hair1 } from '../data/salonData';
 
 export const Hero: React.FC = () => {
   const { openBooking } = useBooking();
@@ -104,11 +104,8 @@ export const Hero: React.FC = () => {
           <div className="absolute inset-0 z-0 flex items-center justify-end pointer-events-none overflow-hidden">
             <div className="relative w-full lg:w-3/5 h-full flex items-center justify-end">
               <img
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&auto=format&fit=crop&q=85"
-                alt="Hair Spray Unisex Salon Styling Chairs & Interior - Kavoor Mangalore"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1600&auto=format&fit=crop&q=85';
-                }}
+                src={hair1}
+                alt="Hair Spray Unisex Salon Panorama & Interior - Kavoor Mangalore"
                 className="w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 opacity-80 sm:opacity-85 transition-opacity"
               />
               {/* Soft progressive gradient ensuring left text stays pristine and readable */}

@@ -68,7 +68,7 @@ export interface FAQItem {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Hair' | 'Bridal' | 'Salon Interior' | 'Facials & Nails';
+  category: string;
   imageUrl: string;
   beforeImageUrl?: string;
   description: string;
