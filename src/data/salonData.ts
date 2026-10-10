@@ -500,42 +500,99 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: 'Hair',
     imageUrl: hair1,
     beforeImageUrl: hair1,
-    description: 'Restorative Keratin & Cysteine conditioning transforming dull texture into silky, lustrous waves.'
+    description: 'Restorative Keratin & Cysteine conditioning transforming dull, unruly hair into silky, mirror-shine waves with 100% frizz immunity.',
+    duration: '90 - 120 mins',
+    stylist: 'Senior Hair Specialist',
+    highlight: 'Zero Frizz Guaranteed',
+    tags: ['Keratin Cysteine', 'Zero Frizz', 'Humidity Shield', 'Mirror Shine']
   },
   {
     id: 'gal-2',
     title: 'Deep Scalp Detox & Therapeutic Basin Wash',
     category: 'Hair',
     imageUrl: hair2,
-    description: 'Invigorating hair wash, protein lather, and acupressure scalp cleanse at our ergonomic wash stations.'
+    description: 'Invigorating hair cleanse with therapeutic acupressure wash, organic protein lather, and micro-mist basin rinse.',
+    duration: '45 mins',
+    stylist: 'Scalp & Hair Therapist',
+    highlight: 'Detox & Tension Relief',
+    tags: ['Scalp Detox', 'Basin Wash', 'Follicle Boost', 'Pure Relaxation']
   },
   {
     id: 'gal-3',
     title: 'Luxury Air-Conditioned Styling Bays',
     category: 'Salon Interior',
     imageUrl: hair3,
-    description: 'Centrally air-conditioned styling stations with hydraulic leather chairs and wide vanity mirrors in Kavoor.'
+    description: 'Centrally air-conditioned styling stations with hydraulic leather chairs, sanitized instruments, and wide vanity mirrors.',
+    duration: 'Walk-in / Booking',
+    stylist: 'Kavoor Studio',
+    highlight: 'Central AC & VIP Comfort',
+    tags: ['Central AC', 'Hydraulic Chairs', 'Hygienic Tools', 'Modern Ambience']
   },
   {
     id: 'gal-4',
     title: 'Precision Blowout & Volume Heat Styling',
     category: 'Hair',
     imageUrl: hair4,
-    description: 'Professional round-brush blowout and thermal protection finish for long-lasting root lift and shine.'
+    description: 'Artisanal round-brush thermal blowout infusing bounce, root lift, and weightless movement with thermal protection.',
+    duration: '40 mins',
+    stylist: 'Creative Stylist',
+    highlight: 'Weightless Bounce',
+    tags: ['Thermal Blowout', 'Root Lift', 'Silk Finish', 'Heat Shield']
   },
   {
     id: 'gal-5',
     title: 'Vitamin C Brightening & Deep Facial Therapy',
     category: 'Facials & Nails',
     imageUrl: hair5,
-    description: 'Custom botanical facial therapy, gentle enzyme peel, and deep hydration mask for radiant skin.'
+    description: 'Custom botanical facial therapy, gentle enzyme peel, lymphatic drainage massage, and cold hydration mask for glowing skin.',
+    duration: '60 mins',
+    stylist: 'Skin Care Specialist',
+    highlight: 'Instant Radiant Glow',
+    tags: ['Vitamin C Peel', 'Deep Hydration', 'Pore Tightening', 'Dewy Glow']
   },
   {
     id: 'gal-6',
-    title: 'Contemporary Makeover & Flawless Finish',
+    title: 'Contemporary Bridal Makeover & HD Finish',
     category: 'Bridal',
     imageUrl: hair6,
-    description: 'Personalized styling and makeup crafted to complement facial contours and bring out natural confidence.'
+    description: 'Bespoke high-definition bridal transformation featuring 4K waterproof makeup, traditional floral hair architecture, and jewelry setting.',
+    duration: '180 mins',
+    stylist: 'Master Bridal Artist',
+    highlight: '4K Waterproof HD',
+    tags: ['4K HD Makeup', 'Bridal Hair Architecture', 'Sweatproof', 'Saree Draping']
+  },
+  {
+    id: 'gal-7',
+    title: 'Royal Reception Glam & Sculpted Updo',
+    category: 'Bridal',
+    imageUrl: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1000&auto=format&fit=crop&q=80',
+    description: 'Luminous airbrushed reception makeup with warm copper tones, sculpted bridal updo, and bespoke jewelry pinning.',
+    duration: '150 mins',
+    stylist: 'Bridal Specialist',
+    highlight: 'Airbrush Glamour',
+    tags: ['Airbrush Makeup', 'Reception Style', 'Sculpted Updo', 'Long-Wear']
+  },
+  {
+    id: 'gal-8',
+    title: 'Hydrotherapy Pedicure & Gel Nail Art',
+    category: 'Facials & Nails',
+    imageUrl: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=1000&auto=format&fit=crop&q=80',
+    description: 'Warm herbal bubble foot soak, marine clay detox wrap, callus smoothing, and precision gel gloss polish finish.',
+    duration: '55 mins',
+    stylist: 'Nail & Spa Technician',
+    highlight: 'Herbal Jacuzzi Bath',
+    tags: ['Herbal Foot Soak', 'Marine Mud Wrap', 'Callus Treatment', 'Gloss Gel Polish']
+  },
+  {
+    id: 'gal-9',
+    title: 'Private VIP Aesthetic Consultation Lounge',
+    category: 'Salon Interior',
+    imageUrl: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&auto=format&fit=crop&q=80',
+    description: 'Quiet, dedicated private consultation and skin therapy zone designed for personal privacy, skin analysis, and bridal trials.',
+    duration: 'Complimentary Session',
+    stylist: 'Consultation Suite',
+    highlight: 'Private & Sterile',
+    tags: ['Private Lounge', 'Skin Analysis', 'Bridal Trial Suite', 'Sterile Care']
   }
 ];
 

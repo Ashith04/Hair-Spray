@@ -71,7 +71,11 @@ export interface GalleryItem {
   category: 'Hair' | 'Bridal' | 'Salon Interior' | 'Facials & Nails';
   imageUrl: string;
   beforeImageUrl?: string;
-  description?: string;
+  description: string;
+  duration?: string;
+  stylist?: string;
+  highlight?: string;
+  tags?: string[];
 }
 
 export interface MembershipPlan {

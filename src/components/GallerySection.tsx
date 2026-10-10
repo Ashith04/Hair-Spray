@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Eye, X, ChevronLeft, ChevronRight, ArrowLeftRight } from 'lucide-react';
+import { Eye, X, ChevronLeft, ChevronRight, ArrowLeftRight, Clock, Sparkles } from 'lucide-react';
 import { GALLERY_ITEMS, hair1 } from '../data/salonData';
 import { GalleryItem } from '../types';
 
@@ -178,7 +178,7 @@ export const GallerySection: React.FC = () => {
               whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
               transition={{ duration: 0.4, delay: (idx % 6) * 0.06 }}
               onClick={() => setSelectedImageIndex(idx)}
-              className="rounded-[24px] overflow-hidden bg-white border border-zinc-200 hover:border-zinc-400 hover:shadow-xl group cursor-pointer transition-all duration-300 relative aspect-[4/3] shadow-xs"
+              className="rounded-[24px] overflow-hidden bg-zinc-950 border border-zinc-200 hover:border-[#9E6868]/60 hover:shadow-2xl group cursor-pointer transition-all duration-300 relative min-h-[340px] sm:min-h-[360px] aspect-[4/3] shadow-xs"
             >
               <img
                 src={item.imageUrl}
@@ -186,18 +186,77 @@ export const GallerySection: React.FC = () => {
                 onError={(e) => {
                   e.currentTarget.src = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&auto=format&fit=crop&q=80';
                 }}
-                className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover group-hover:scale-108 group-hover:brightness-50 transition-all duration-500 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white font-sans">
-                <span className="text-[10px] font-semibold text-amber-300 uppercase tracking-wider mb-1">
+
+              {/* Default subtle title bar (visible when NOT hovered) */}
+              <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-0 flex flex-col justify-end pointer-events-none">
+                <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider mb-1">
                   {item.category}
                 </span>
-                <h4 className="text-base font-serif font-bold leading-snug mb-1 text-white">
+                <h4 className="text-sm font-serif font-bold text-white line-clamp-1">
                   {item.title}
                 </h4>
-                <div className="flex items-center gap-1.5 text-xs text-white/80">
-                  <Eye className="w-3.5 h-3.5 text-[#9E6868]" />
-                  <span>Inspect in Lightbox</span>
+              </div>
+
+              {/* Full Detailed Info Overlay (Revealed on HOVER) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-black/85 to-black/60 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-5 sm:p-6 text-white font-sans">
+                {/* Header: Category Badge + Duration Pill */}
+                <div className="flex items-center justify-between gap-2 transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#9E6868] text-white shadow-xs">
+                    {item.category}
+                  </span>
+                  {item.duration && (
+                    <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-medium bg-white/15 text-zinc-200 backdrop-blur-md border border-white/10">
+                      <Clock className="w-3 h-3 text-amber-300" />
+                      <span>{item.duration}</span>
+                    </span>
+                  )}
+                </div>
+
+                {/* Body: Highlights, Title, Image Description Info, and Tags */}
+                <div className="my-auto py-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  {item.highlight && (
+                    <div className="flex items-center gap-1.5 text-[11px] font-semibold text-amber-300 mb-1.5">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{item.highlight}</span>
+                    </div>
+                  )}
+                  <h4 className="text-base sm:text-lg font-serif font-bold leading-snug text-white mb-2 group-hover:text-amber-100 transition-colors">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-zinc-300 leading-relaxed font-sans line-clamp-3 mb-3 font-normal">
+                    {item.description}
+                  </p>
+
+                  {/* Feature Tags */}
+                  {item.tags && item.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {item.tags.slice(0, 3).map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white/10 text-zinc-200 border border-white/10"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer: Stylist info + Inspect action */}
+                <div className="pt-2 border-t border-white/15 flex items-center justify-between text-xs transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  {item.stylist ? (
+                    <span className="text-[11px] text-zinc-400 font-medium truncate max-w-[150px]">
+                      By <span className="text-zinc-200">{item.stylist}</span>
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-zinc-400 font-medium">Hair Spray Kavoor</span>
+                  )}
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-amber-300 group-hover:text-amber-200 transition-colors">
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>Inspect</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -251,21 +310,54 @@ export const GallerySection: React.FC = () => {
                 </div>
 
                 {/* Lightbox Footer Info */}
-                <div className="px-2 flex items-center justify-between font-sans">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-wider text-[#9E6868] block font-bold">
-                      {filteredGallery[selectedImageIndex].category}
-                    </span>
-                    <h3 className="text-lg font-serif font-bold text-zinc-950">
+                <div className="px-2 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-sans">
+                  <div className="max-w-2xl">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-[10px] uppercase tracking-wider text-[#9E6868] font-bold px-2 py-0.5 bg-[#9E6868]/10 rounded-full border border-[#9E6868]/20">
+                        {filteredGallery[selectedImageIndex].category}
+                      </span>
+                      {filteredGallery[selectedImageIndex].duration && (
+                        <span className="flex items-center gap-1 text-[11px] text-zinc-600 font-medium">
+                          <Clock className="w-3 h-3 text-[#9E6868]" />
+                          <span>{filteredGallery[selectedImageIndex].duration}</span>
+                        </span>
+                      )}
+                      {filteredGallery[selectedImageIndex].highlight && (
+                        <span className="flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/70">
+                          <Sparkles className="w-3 h-3 text-amber-600" />
+                          <span>{filteredGallery[selectedImageIndex].highlight}</span>
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-serif font-bold text-zinc-950 mb-1">
                       {filteredGallery[selectedImageIndex].title}
                     </h3>
-                    <p className="text-xs text-zinc-600 font-sans font-normal">
+                    <p className="text-xs sm:text-sm text-zinc-600 font-sans font-normal leading-relaxed mb-2.5">
                       {filteredGallery[selectedImageIndex].description}
                     </p>
+                    {filteredGallery[selectedImageIndex].tags && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {filteredGallery[selectedImageIndex].tags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-600 border border-zinc-200"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <span className="text-xs text-zinc-400 font-medium">
-                    {selectedImageIndex + 1} / {filteredGallery.length}
-                  </span>
+                  <div className="flex sm:flex-col items-center sm:items-end justify-between gap-1 text-right border-t sm:border-t-0 pt-2 sm:pt-0 border-zinc-100">
+                    {filteredGallery[selectedImageIndex].stylist && (
+                      <div className="text-xs text-zinc-500">
+                        Expert: <span className="font-semibold text-zinc-900">{filteredGallery[selectedImageIndex].stylist}</span>
+                      </div>
+                    )}
+                    <span className="text-xs text-zinc-400 font-medium">
+                      {selectedImageIndex + 1} / {filteredGallery.length}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
