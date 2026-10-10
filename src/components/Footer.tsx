@@ -8,7 +8,12 @@ export const Footer: React.FC = () => {
   const { openBooking } = useBooking();
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const lenisInstance = (window as unknown as { __lenis?: { scrollTo: (target: number | HTMLElement | string, options?: { duration?: number }) => void } }).__lenis;
+    if (lenisInstance) {
+      lenisInstance.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const navLinks = [

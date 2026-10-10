@@ -63,9 +63,14 @@ export const Navbar: React.FC = () => {
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
+    const target = document.querySelector(href) as HTMLElement | null;
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      const lenisInstance = (window as unknown as { __lenis?: { scrollTo: (el: HTMLElement | string, options?: { offset?: number; duration?: number }) => void } }).__lenis;
+      if (lenisInstance) {
+        lenisInstance.scrollTo(target, { offset: -70, duration: 1.1 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

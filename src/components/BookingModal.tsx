@@ -209,16 +209,18 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
   return (
     <div
       id="booking-modal-overlay"
+      data-lenis-prevent
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto"
       onClick={handleResetAndClose}
     >
       <motion.div
         id="booking-modal-card"
+        data-lenis-prevent
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full max-w-2xl bg-white border border-zinc-200 p-6 sm:p-8 rounded-[28px] text-zinc-900 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto"
+        className="w-full max-w-2xl bg-white border border-zinc-200 p-6 sm:p-8 rounded-[28px] text-zinc-900 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto no-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -474,7 +476,7 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
                 </span>
               </div>
 
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin">
+              <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                 {dateStrip.map((item) => {
                   const isSelected = selectedDate === item.iso;
                   return (

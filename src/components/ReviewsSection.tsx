@@ -247,17 +247,19 @@ export const ReviewsSection: React.FC = () => {
           {isWriteModalOpen && (
             <div
               id="review-modal-backdrop"
+              data-lenis-prevent
               onClick={handleCloseModal}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
             >
               <motion.div
                 id="review-modal-card"
+                data-lenis-prevent
                 onClick={(e) => e.stopPropagation()}
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full max-w-lg p-8 rounded-[28px] border border-zinc-200 bg-white text-zinc-900 shadow-2xl relative my-auto max-h-[90vh] overflow-y-auto"
+                className="w-full max-w-lg p-8 rounded-[28px] border border-zinc-200 bg-white text-zinc-900 shadow-2xl relative my-auto max-h-[90vh] overflow-y-auto no-scrollbar"
               >
                 {/* Cancel / Close Top Button */}
                 <button

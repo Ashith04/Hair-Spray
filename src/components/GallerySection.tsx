@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Eye, X, ChevronLeft, ChevronRight, ArrowLeftRight } from 'lucide-react';
-import { GALLERY_ITEMS } from '../data/salonData';
+import { GALLERY_ITEMS, hair1 } from '../data/salonData';
 import { GalleryItem } from '../types';
 
 export const GallerySection: React.FC = () => {
@@ -67,7 +67,7 @@ export const GallerySection: React.FC = () => {
               Authentic client makeovers, bridal creations, and interiors from our central Kavoor salon.
             </p>
             {/* Category Filter Chips */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 max-w-full font-sans">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 max-w-full font-sans no-scrollbar">
               {categories.map((cat) => (
                 <button
                   key={cat}
@@ -130,7 +130,7 @@ export const GallerySection: React.FC = () => {
             >
               {/* After Image (Full width background) */}
               <img
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&auto=format&fit=crop&q=80"
+                src={hair1}
                 alt="After Treatment - Silky Smooth Mirror Shine"
                 className="absolute inset-0 w-full h-full object-cover filter brightness-95"
               />

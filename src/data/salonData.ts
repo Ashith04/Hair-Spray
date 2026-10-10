@@ -5,6 +5,14 @@ import vedaImage from '../assets/images/veda.jpg';
 import ashaImage from '../assets/images/asha.jpg';
 import aliImage from '../assets/images/ali.jpg';
 import sandhyaImage from '../assets/images/sandhya.jpg';
+import hair1 from '../assets/images/hair1.png';
+import hair2 from '../assets/images/hair2.png';
+import hair3 from '../assets/images/hair3.png';
+import hair4 from '../assets/images/hair4.png';
+import hair5 from '../assets/images/hair5.png';
+import hair6 from '../assets/images/hair6.png';
+
+export { hair1, hair2, hair3, hair4, hair5, hair6 };
 
 export const SALON_INFO = {
   name: 'Hair Spray Unisex Salon',
@@ -488,46 +496,46 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 'gal-1',
-    title: 'Keratin Cysteine Mirror Shine Transformation',
+    title: 'Keratin & Gloss Wavy Hair Architecture',
     category: 'Hair',
-    imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1000&auto=format&fit=crop&q=80',
-    beforeImageUrl: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=1000&auto=format&fit=crop&q=80',
-    description: '4-hour Keratin Cysteine treatment eliminating extreme frizz into smooth reflective shine.'
+    imageUrl: hair1,
+    beforeImageUrl: hair1,
+    description: 'Restorative Keratin & Cysteine conditioning transforming dull texture into silky, lustrous waves.'
   },
   {
     id: 'gal-2',
-    title: 'Contemporary South Indian Bridal Look',
-    category: 'Bridal',
-    imageUrl: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1000&auto=format&fit=crop&q=80',
-    description: 'Traditional jasmine arrangement with intricate braid and HD water-resistant makeup.'
+    title: 'Deep Scalp Detox & Therapeutic Basin Wash',
+    category: 'Hair',
+    imageUrl: hair2,
+    description: 'Invigorating hair wash, protein lather, and acupressure scalp cleanse at our ergonomic wash stations.'
   },
   {
     id: 'gal-3',
-    title: 'Modern Frosted Glass Salon Interior',
+    title: 'Luxury Air-Conditioned Styling Bays',
     category: 'Salon Interior',
-    imageUrl: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&auto=format&fit=crop&q=80',
-    description: 'Fully air-conditioned luxury styling stations with plush leather recliners.'
+    imageUrl: hair3,
+    description: 'Centrally air-conditioned styling stations with hydraulic leather chairs and wide vanity mirrors in Kavoor.'
   },
   {
     id: 'gal-4',
-    title: 'Sun-Kissed Balayage & Textured Layers',
+    title: 'Precision Blowout & Volume Heat Styling',
     category: 'Hair',
-    imageUrl: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1000&auto=format&fit=crop&q=80',
-    description: 'Dimensional caramel balayage with face-framing curtain bangs.'
+    imageUrl: hair4,
+    description: 'Professional round-brush blowout and thermal protection finish for long-lasting root lift and shine.'
   },
   {
     id: 'gal-5',
-    title: 'Vitamin C Brightening Glass Skin',
+    title: 'Vitamin C Brightening & Deep Facial Therapy',
     category: 'Facials & Nails',
-    imageUrl: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1000&auto=format&fit=crop&q=80',
-    description: 'Post-facial radiant illumination and deep hydration therapy.'
+    imageUrl: hair5,
+    description: 'Custom botanical facial therapy, gentle enzyme peel, and deep hydration mask for radiant skin.'
   },
   {
     id: 'gal-6',
-    title: 'Regal Reception Bridal Styling',
+    title: 'Contemporary Makeover & Flawless Finish',
     category: 'Bridal',
-    imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1000&auto=format&fit=crop&q=80',
-    description: 'Glamorous Hollywood waves with Swarovski hair pins and luminous strobe makeup.'
+    imageUrl: hair6,
+    description: 'Personalized styling and makeup crafted to complement facial contours and bring out natural confidence.'
   }
 ];
 

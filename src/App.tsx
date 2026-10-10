@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import { ThemeProvider } from './context/ThemeContext';
 import { BookingProvider } from './context/BookingContext';
 import { LoaderSequence } from './components/LoaderSequence';
@@ -21,10 +22,34 @@ import { MobileBookingBar } from './components/MobileBookingBar';
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // Professional smooth scrolling setup (Lenis)
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      touchMultiplier: 1.6,
+      infinite: false,
+    });
+
+    // Expose lenis globally for seamless anchor clicks & modal controls
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
+    let animId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      animId = requestAnimationFrame(raf);
+    }
+    animId = requestAnimationFrame(raf);
+
     const handleReplay = () => setIsLoading(true);
     window.addEventListener('replay-loader-intro', handleReplay);
-    return () => window.removeEventListener('replay-loader-intro', handleReplay);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      lenis.destroy();
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
+      window.removeEventListener('replay-loader-intro', handleReplay);
+    };
   }, []);
 
   return (
