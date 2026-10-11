@@ -22,7 +22,6 @@ export const Footer: React.FC = () => {
     { label: 'Salon Menu', href: '#services' },
     { label: '4-Step Process', href: '#how-we-work' },
     { label: 'Master Stylists', href: '#stylists' },
-    { label: 'Weekly Timings', href: '#timings' },
     { label: 'VIP Memberships', href: '#pricing' },
     { label: 'Client Reviews', href: '#reviews' },
     { label: 'Gallery Portfolio', href: '#gallery' },

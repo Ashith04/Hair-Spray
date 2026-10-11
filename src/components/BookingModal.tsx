@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useBooking } from '../context/BookingContext';
-import { SERVICES_LIST, STYLISTS_LIST, TIME_SLOTS, SALON_INFO } from '../data/salonData';
+import { SERVICES_LIST, STYLISTS_LIST, SALON_INFO } from '../data/salonData';
 import { AudienceFilter, isServiceForAudience, getAudienceBadge } from '../utils/serviceAudience';
 import { SalonLogo } from './SalonLogo';
 
@@ -30,8 +30,6 @@ export const BookingModal: React.FC = () => {
     setSelectedStylist,
     selectedDate,
     setSelectedDate,
-    selectedTime,
-    setSelectedTime,
     addBooking,
   } = useBooking();
 
@@ -98,7 +96,6 @@ export const BookingModal: React.FC = () => {
 📞 *Phone:* ${customerPhone.trim()}
 💇 *Treatment:* ${srvName} (${srvPrice})
 📅 *Date:* ${selectedDate}
-⏰ *Time:* ${selectedTime}
 💈 *Stylist:* ${stylistName}${noteText}${couponText}
 🔖 *Ref ID:* #${bId}
 
@@ -147,7 +144,6 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
       service: selectedService,
       stylist: selectedStylist || undefined,
       date: selectedDate,
-      timeSlot: selectedTime,
       customerName: customerName.trim(),
       customerPhone: customerPhone.trim(),
       totalPrice: finalPrice,
@@ -277,9 +273,9 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
                 </div>
 
                 <div>
-                  <p className="text-zinc-500 font-medium">Date & Time</p>
+                  <p className="text-zinc-500 font-medium">Appointment Date</p>
                   <p className="font-bold text-sm text-zinc-950 font-serif">
-                    {selectedDate} at {selectedTime}
+                    {selectedDate}
                   </p>
                 </div>
 
@@ -507,37 +503,10 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
               </div>
             </div>
 
-            {/* Step 4: Time Slot Matrix */}
-            <div>
-              <label className="block text-xs font-sans uppercase tracking-wider text-zinc-700 mb-2 font-semibold">
-                4. Select Time Slot
-              </label>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 font-sans">
-                {TIME_SLOTS.map((slot) => {
-                  const isSelected = selectedTime === slot;
-                  return (
-                    <button
-                      type="button"
-                      key={slot}
-                      id={`time-slot-${slot.replace(/\s+|:/g, '')}`}
-                      onClick={() => setSelectedTime(slot)}
-                      className={`py-2 px-3 rounded-xl text-xs transition-all cursor-pointer font-medium ${
-                        isSelected
-                          ? 'bg-zinc-900 text-white font-bold shadow-xs'
-                          : 'bg-zinc-50 border border-zinc-200 text-zinc-600 hover:text-zinc-950 hover:border-zinc-300'
-                      }`}
-                    >
-                      {slot}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Step 5: Guest Details */}
+            {/* Step 4: Guest Details */}
             <div className="space-y-3 pt-2 border-t border-zinc-200">
               <label className="block text-xs font-sans uppercase tracking-wider text-zinc-700 font-semibold">
-                5. Guest Details
+                4. Guest Details
               </label>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

@@ -9,7 +9,6 @@ import { About } from './components/About';
 import { ServicesSection } from './components/ServicesSection';
 import { HowWeWork } from './components/HowWeWork';
 import { Stylists } from './components/Stylists';
-import { TimingsSection } from './components/TimingsSection';
 import { PricingMembership } from './components/PricingMembership';
 import { ReviewsSection } from './components/ReviewsSection';
 import { GallerySection } from './components/GallerySection';
@@ -81,10 +80,7 @@ export default function App() {
             {/* E. Stylists / Staff */}
             <Stylists />
 
-            {/* F. Timings & Live Open Status */}
-            <TimingsSection />
-
-            {/* G. Pricing & VIP Membership Plans */}
+            {/* F. Pricing & VIP Membership Plans */}
             <PricingMembership />
 
             {/* H. Reviews & Testimonials */}

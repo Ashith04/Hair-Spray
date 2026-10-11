@@ -103,7 +103,7 @@ export interface BookingFormState {
   serviceId: string;
   stylistId: string;
   date: string;
-  timeSlot: string;
+  timeSlot?: string;
   customerName: string;
   customerPhone: string;
   customerEmail: string;
@@ -117,7 +117,7 @@ export interface BookingConfirmation {
   service: ServiceItem;
   stylist?: Stylist;
   date: string;
-  timeSlot: string;
+  timeSlot?: string;
   customerName: string;
   customerPhone: string;
   totalPrice: number;

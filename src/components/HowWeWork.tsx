@@ -10,8 +10,8 @@ export const HowWeWork: React.FC = () => {
     {
       stepNumber: '01',
       title: 'Book Online',
-      subtitle: 'Pick Service & Slot',
-      description: 'Select your preferred treatment, master stylist, and convenient date & time slot with instant WhatsApp confirmation.',
+      subtitle: 'Pick Treatment & Date',
+      description: 'Select your preferred treatment, master stylist, and convenient date with instant WhatsApp confirmation.',
       icon: CalendarCheck,
       highlight: 'Instant Confirmation'
     },
