@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   X,
   Calendar,
-  Clock,
   User,
   Scissors,
   CheckCircle2,
@@ -87,7 +86,7 @@ export const BookingModal: React.FC = () => {
 
   const generateWhatsAppMessage = (bId: string) => {
     const srvName = selectedService?.name || 'Salon Consultation';
-    const srvPrice = `₹${finalPrice.toLocaleString()}`;
+    const srvPrice = finalPrice > 0 ? `₹${finalPrice.toLocaleString()}` : 'Onwards (Consultation)';
     const stylistName = selectedStylist ? selectedStylist.name : 'Next Available Specialist';
     const noteText = customerNotes.trim() ? `\n📝 *Notes:* ${customerNotes.trim()}` : '';
     const couponText = promoApplied ? `\n🏷️ *Promo:* FIRSTGLAM (15% OFF applied)` : '';
@@ -415,9 +414,13 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
               >
                 {filteredServicesList.map((srv) => {
                   const aud = getAudienceBadge(srv);
+                  const priceLabel =
+                    srv.price > 0
+                      ? `₹${srv.price.toLocaleString()}${srv.priceSecondary ? ` / ₹${srv.priceSecondary.toLocaleString()}` : ''}`
+                      : 'Onwards';
                   return (
                     <option key={srv.id} value={srv.id} className="bg-white text-zinc-950">
-                      [{aud.shortLabel}] {srv.name} — ₹{srv.price.toLocaleString()} ({srv.durationMin} mins)
+                      [{aud.shortLabel}] {srv.name} — {priceLabel}
                     </option>
                   );
                 })}
@@ -628,9 +631,9 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
                 </span>
                 <div className="flex items-baseline gap-1.5">
                   <span className="text-2xl font-serif font-bold text-zinc-950">
-                    ₹{finalPrice.toLocaleString()}
+                    {finalPrice > 0 ? `₹${finalPrice.toLocaleString()}` : 'Onwards'}
                   </span>
-                  {promoApplied && (
+                  {promoApplied && basePrice > 0 && (
                     <span className="text-xs font-sans text-zinc-400 line-through">
                       ₹{basePrice.toLocaleString()}
                     </span>

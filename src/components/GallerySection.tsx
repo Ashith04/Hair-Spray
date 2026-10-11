@@ -201,16 +201,11 @@ export const GallerySection: React.FC = () => {
 
               {/* Full Detailed Info Overlay (Revealed on HOVER - Soft Dev Style) */}
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/75 to-black/30 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-5 sm:p-6 text-white font-sans">
-                {/* Header: Clean Category Pill + Area Badge */}
+                {/* Header: Clean Category Pill */}
                 <div className="flex items-center justify-between gap-2">
                   <span className="px-2.5 py-1 rounded-full text-[11px] font-medium tracking-wide bg-white/10 backdrop-blur-md border border-white/15 text-zinc-200">
                     {item.category}
                   </span>
-                  {item.duration && (
-                    <span className="text-[11px] text-zinc-400 font-medium">
-                      {item.duration}
-                    </span>
-                  )}
                 </div>
 
                 {/* Body: Clean Title & Direct Photo Info */}

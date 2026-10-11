@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Clock, ArrowUpRight, Scissors, ChevronDown, ChevronUp, Layers, User } from 'lucide-react';
+import { Search, ArrowUpRight, Scissors, ChevronDown, ChevronUp, Layers, User } from 'lucide-react';
 import { SERVICES_LIST } from '../data/salonData';
 import { ServiceCategory, ServiceItem } from '../types';
 import { useBooking } from '../context/BookingContext';
@@ -283,7 +283,7 @@ export const ServicesSection: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-                  {/* Category, Audience, & Duration Pills on Image */}
+                  {/* Category & Audience Pills on Image */}
                   <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-2 font-sans text-xs">
                     <div className="flex items-center gap-1.5 flex-wrap">
                       <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white/95 border border-white/15 font-medium">
@@ -306,10 +306,6 @@ export const ServicesSection: React.FC = () => {
                         );
                       })()}
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white/90 border border-white/15 flex items-center gap-1 font-medium shrink-0">
-                      <Clock className="w-3 h-3 text-[#9E6868]" />
-                      {service.durationMin}m
-                    </span>
                   </div>
                 </div>
 
@@ -342,12 +338,18 @@ export const ServicesSection: React.FC = () => {
                   <div className="pt-4 border-t border-zinc-100 flex items-center justify-between gap-3">
                     <div>
                       <span className="text-[10px] uppercase font-sans tracking-wider text-zinc-400 block font-medium">
-                        {service.priceNote ? service.priceNote : 'Rate'}
+                        {service.price > 0 ? (service.priceNote ? service.priceNote : 'Rate') : 'Rate'}
                       </span>
                       <div className="flex items-baseline gap-1.5 flex-wrap">
-                        <span className="text-xl sm:text-2xl font-serif font-bold text-zinc-950">
-                          ₹{service.price.toLocaleString()}
-                        </span>
+                        {service.price > 0 ? (
+                          <span className="text-xl sm:text-2xl font-serif font-bold text-zinc-950">
+                            ₹{service.price.toLocaleString()}
+                          </span>
+                        ) : (
+                          <span className="text-xl sm:text-2xl font-serif font-bold text-zinc-950">
+                            Onwards
+                          </span>
+                        )}
                         {service.priceSecondary && (
                           <span className="text-xs font-sans text-[#9E6868] font-semibold">
                             / ₹{service.priceSecondary.toLocaleString()} <span className="text-[10px] opacity-80">{service.secondaryLabel ? `(${service.secondaryLabel})` : ''}</span>

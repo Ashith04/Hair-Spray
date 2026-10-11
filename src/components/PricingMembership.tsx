@@ -304,17 +304,12 @@ export const PricingMembership: React.FC = () => {
                   className="p-6 rounded-[24px] bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md flex flex-col justify-between transition-all shadow-xs"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-3 font-sans text-xs">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[#9E6868] font-bold">
-                          {service.category}
-                        </span>
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full border font-semibold ${aud.badgeClass}`}>
-                          {aud.shortLabel}
-                        </span>
-                      </div>
-                      <span className="text-zinc-500 font-medium">
-                        {service.durationMin}m
+                    <div className="flex items-center gap-2 mb-3 font-sans text-xs">
+                      <span className="text-[#9E6868] font-bold">
+                        {service.category}
+                      </span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full border font-semibold ${aud.badgeClass}`}>
+                        {aud.shortLabel}
                       </span>
                     </div>
 
@@ -329,9 +324,15 @@ export const PricingMembership: React.FC = () => {
                   <div className="pt-4 border-t border-zinc-100 flex items-center justify-between gap-2">
                     <div>
                       <div className="flex items-baseline gap-1.5 flex-wrap">
-                        <span className="text-xl font-serif font-bold text-zinc-950">
-                          ₹{service.price.toLocaleString()}
-                        </span>
+                        {service.price > 0 ? (
+                          <span className="text-xl font-serif font-bold text-zinc-950">
+                            ₹{service.price.toLocaleString()}
+                          </span>
+                        ) : (
+                          <span className="text-xl font-serif font-bold text-zinc-950">
+                            Onwards
+                          </span>
+                        )}
                         {service.priceSecondary && (
                           <span className="text-xs font-sans text-[#9E6868] font-semibold">
                             / ₹{service.priceSecondary.toLocaleString()}

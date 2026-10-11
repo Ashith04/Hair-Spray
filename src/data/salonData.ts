@@ -15,12 +15,14 @@ import hair6 from '../assets/images/hair6.png';
 import hair7 from '../assets/images/hair7.png';
 import hair8 from '../assets/images/hair8.png';
 import hair9 from '../assets/images/hair9.png';
+import hairSprayLogo from '../assets/images/hair_spraay_logo_1789927117930.jpg';
 
-export { hair1, hair2, hair3, hair4, hair5, hair6, hair7, hair8, hair9 };
+export { hair1, hair2, hair3, hair4, hair5, hair6, hair7, hair8, hair9, hairSprayLogo };
 
 export const SALON_INFO = {
   name: 'Hair Spray Unisex Salon',
   shortName: 'Hair Spray',
+  logo: hairSprayLogo,
   tagline: 'Look Great, Feel Confident',
   subheading: 'Kavoor’s premier unisex salon & academy delivering precision hair styling, advanced hair treatments, bridal packages, skin facials, de-tan, and luxury grooming since 2017.',
   brochureHighlights: [
