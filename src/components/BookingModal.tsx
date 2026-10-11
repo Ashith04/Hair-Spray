@@ -18,6 +18,7 @@ import confetti from 'canvas-confetti';
 import { useBooking } from '../context/BookingContext';
 import { SERVICES_LIST, STYLISTS_LIST, TIME_SLOTS, SALON_INFO } from '../data/salonData';
 import { AudienceFilter, isServiceForAudience, getAudienceBadge } from '../utils/serviceAudience';
+import { SalonLogo } from './SalonLogo';
 
 export const BookingModal: React.FC = () => {
   const {
@@ -345,17 +346,20 @@ _Hello Hair Spray Salon! Please confirm my booking at your Kavoor branch._`;
           /* Client-Side Booking Form */
           <form onSubmit={handleBookingSubmit} className="space-y-6">
             {/* Modal Header */}
-            <div>
-              <div className="font-sans text-xs uppercase tracking-widest text-emerald-700 mb-1 font-bold flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                <span>Direct WhatsApp & Call Booking</span>
+            <div className="flex items-start gap-4">
+              <SalonLogo size="md" />
+              <div className="flex-1 min-w-0">
+                <div className="font-sans text-xs uppercase tracking-widest text-emerald-700 mb-0.5 font-bold flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                  <span>Direct WhatsApp & Call Booking</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-zinc-950">
+                  Book Your Appointment
+                </h3>
+                <p className="text-xs text-zinc-500 mt-0.5 font-sans font-medium">
+                  Kavoor, Mangalore · No advance payment needed · Chat or call directly to confirm
+                </p>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-zinc-950">
-                Book Your Appointment
-              </h3>
-              <p className="text-xs text-zinc-500 mt-1 font-sans font-medium">
-                Kavoor, Mangalore · No advance payment needed · Chat or call directly to confirm
-              </p>
             </div>
 
             {/* Step 1: Select Service with Gender Quick Filter */}

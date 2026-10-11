@@ -1,5 +1,5 @@
 import React from 'react';
-import officialLogoImg from '../assets/images/hair_spraay_logo_1789927117930.jpg';
+import officialLogoImg from '../assets/images/hairlogo.jpeg';
 
 interface SalonLogoProps {
   className?: string;
@@ -10,7 +10,7 @@ interface SalonLogoProps {
 
 /**
  * Authentic Hair Spray Unisex Salon Logo
- * Faithfully renders the exact official salon logo provided by the salon.
+ * Faithfully renders the exact official hairlogo.jpeg provided by the salon.
  */
 export const SalonLogo: React.FC<SalonLogoProps> = ({
   className = '',
@@ -18,20 +18,20 @@ export const SalonLogo: React.FC<SalonLogoProps> = ({
   showText = false,
 }) => {
   const sizeMap = {
-    sm: { icon: 'w-8 h-8 rounded-lg', text: 'text-base', sub: 'text-[9px]' },
-    md: { icon: 'w-10 h-10 sm:w-11 sm:h-11 rounded-xl', text: 'text-lg', sub: 'text-[10px]' },
-    lg: { icon: 'w-14 h-14 sm:w-16 sm:h-16 rounded-xl', text: 'text-2xl', sub: 'text-xs' },
-    xl: { icon: 'w-24 h-24 sm:w-28 sm:h-28 rounded-2xl', text: 'text-3xl', sub: 'text-sm' },
-    '2xl': { icon: 'w-32 h-32 rounded-3xl', text: 'text-4xl', sub: 'text-base' },
+    sm: { icon: 'w-8 h-8 rounded-full', text: 'text-base', sub: 'text-[9px]' },
+    md: { icon: 'w-10 h-10 sm:w-11 sm:h-11 rounded-full', text: 'text-lg', sub: 'text-[10px]' },
+    lg: { icon: 'w-14 h-14 sm:w-16 sm:h-16 rounded-full', text: 'text-2xl', sub: 'text-xs' },
+    xl: { icon: 'w-24 h-24 sm:w-28 sm:h-28 rounded-full', text: 'text-3xl', sub: 'text-sm' },
+    '2xl': { icon: 'w-32 h-32 rounded-full', text: 'text-4xl', sub: 'text-base' },
   };
 
   const currentSize = sizeMap[size] || sizeMap.md;
 
   return (
     <div className={`inline-flex items-center gap-3 ${className}`}>
-      {/* Official Exact Logo Container */}
+      {/* Official Hair Spray Circular Logo Container */}
       <div
-        className={`relative ${currentSize.icon} overflow-hidden shrink-0 flex items-center justify-center bg-[#FAF8EF] border border-amber-900/15 shadow-xs transition-transform duration-300 hover:scale-105`}
+        className={`relative ${currentSize.icon} overflow-hidden shrink-0 flex items-center justify-center bg-black border border-zinc-200/40 shadow-xs transition-transform duration-300 hover:scale-105`}
         title="Hair Spray Unisex Salon Official Logo"
       >
         <img

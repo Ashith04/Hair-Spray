@@ -15,7 +15,7 @@ import hair6 from '../assets/images/hair6.png';
 import hair7 from '../assets/images/hair7.png';
 import hair8 from '../assets/images/hair8.png';
 import hair9 from '../assets/images/hair9.png';
-import hairSprayLogo from '../assets/images/hair_spraay_logo_1789927117930.jpg';
+import hairSprayLogo from '../assets/images/hairlogo.jpeg';
 
 export { hair1, hair2, hair3, hair4, hair5, hair6, hair7, hair8, hair9, hairSprayLogo };
 
